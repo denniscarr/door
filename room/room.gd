@@ -1,8 +1,6 @@
 class_name Room
 extends Node
 
-enum Direction { NORTH, SOUTH, EAST, WEST }
-
 @export var _wall_n: Wall
 @export var _wall_s: Wall
 @export var _wall_e: Wall
@@ -17,24 +15,29 @@ func initialize(rng_seed: int):
 	var num_doors := randi_range(2, 4)
 	print("Number of doors: %s" % num_doors)
 
-	var possible_dirs := [Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST]
+	var possible_dirs := [
+		Constants.CompassDir.NORTH,
+		Constants.CompassDir.SOUTH,
+		Constants.CompassDir.EAST,
+		Constants.CompassDir.WEST
+	]
 	possible_dirs.shuffle()
 
 	for i: int in range(num_doors):
-		print("Putting door on wall: %s" % Direction.keys()[possible_dirs[i]])
+		print("Putting door on wall: %s" % Constants.CompassDir.keys()[possible_dirs[i]])
 		var wall := _get_wall_by_dir(possible_dirs[i])
 		wall.create_door()
 
 	_spot_light.light_color = Color.from_hsv(randf(), 0.2, 0.8)
 
 
-func _get_wall_by_dir(dir: Direction) -> Wall:
+func _get_wall_by_dir(dir: Constants.CompassDir) -> Wall:
 	match dir:
-		Direction.NORTH:
+		Constants.CompassDir.NORTH:
 			return _wall_n
-		Direction.SOUTH:
+		Constants.CompassDir.SOUTH:
 			return _wall_s
-		Direction.EAST:
+		Constants.CompassDir.EAST:
 			return _wall_e
-		_, Direction.WEST:
+		_, Constants.CompassDir.WEST:
 			return _wall_w
