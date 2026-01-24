@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddxdkvqstcq6o"]
+
+[ext_resource type="Script" uid="uid://oenc27baf5lh" path="res://room/room.gd" id="1_fsy70"]
+[ext_resource type="PackedScene" uid="uid://cdptvn1ipqlra" path="res://room/floor_or_ceiling.tscn" id="1_ppkfq"]
+[ext_resource type="PackedScene" uid="uid://npd4rrqsbllc" path="res://room/wall.tscn" id="2_j33j0"]
+
+[node name="Room" type="Node3D" node_paths=PackedStringArray("_wall_n", "_wall_s", "_wall_e", "_wall_w", "_spot_light")]
+script = ExtResource("1_fsy70")
+_wall_n = NodePath("WallN")
+_wall_s = NodePath("WallS")
+_wall_e = NodePath("WallE")
+_wall_w = NodePath("WallW")
+_spot_light = NodePath("SpotLight3D")
+
+[node name="Floor" parent="." instance=ExtResource("1_ppkfq")]
+
+[node name="Ceiling" parent="." instance=ExtResource("1_ppkfq")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 3, 0)
+
+[node name="WallN" parent="." instance=ExtResource("2_j33j0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+
+[node name="WallS" parent="." instance=ExtResource("2_j33j0")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 2.5)
+
+[node name="WallE" parent="." instance=ExtResource("2_j33j0")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 0, 0)
+
+[node name="WallW" parent="." instance=ExtResource("2_j33j0")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.5, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.9318004, 0)
+spot_angle = 89.15

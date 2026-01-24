@@ -1,0 +1,118 @@
+[gd_scene load_steps=5 format=3 uid="uid://npd4rrqsbllc"]
+
+[ext_resource type="Script" uid="uid://egl70roemkjn" path="res://room/wall.gd" id="1_ah6et"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_v321d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ah6et"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ah6et"]
+
+[node name="Wall" type="Node3D" node_paths=PackedStringArray("_door_tile_1", "_door_tile_2")]
+script = ExtResource("1_ah6et")
+_door_tile_1 = NodePath("0,2")
+_door_tile_2 = NodePath("1,2")
+
+[node name="0,0" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 0)
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="0,1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0)
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="0,2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="0,3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="0,4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 0)
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="1,0" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="1,1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 0)
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="1,2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+visible = false
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="1,3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="1,4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 0)
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="2,0" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, 0)
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="2,1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.5, 0)
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="2,2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="2,3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 0)
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="2,4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, 0)
+mesh = SubResource("QuadMesh_v321d")
+skeleton = NodePath("../..")
+
+[node name="Door" type="Node3D" parent="."]
+
+[node name="Head" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1.2, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 2.05, 0)
+mesh = SubResource("BoxMesh_ah6et")
+
+[node name="JambLeft" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 0.1, -0.55, 1, 0)
+mesh = SubResource("BoxMesh_ah6et")
+
+[node name="JambRight" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0.55, 1, 0)
+mesh = SubResource("BoxMesh_ah6et")
+
+[node name="Hinge" type="Node3D" parent="Door"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.5, 0, 0)
+
+[node name="Body" type="MeshInstance3D" parent="Door/Hinge"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0.5, 1, -0.0512895)
+mesh = SubResource("BoxMesh_ah6et")
+skeleton = NodePath("../..")
+
+[node name="Knob" type="MeshInstance3D" parent="Door/Hinge"]
+transform = Transform3D(0.099999994, 0, 0, 0, -4.371139e-09, -0.1, 0, 0.099999994, -4.3711386e-09, 0.8487434, 0.8272992, 4.440892e-16)
+mesh = SubResource("CylinderMesh_ah6et")
+skeleton = NodePath("../..")
