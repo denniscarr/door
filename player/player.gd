@@ -11,6 +11,8 @@ enum State {
 	MOVING_FORWARD,
 }
 
+var allow_input: bool = true
+
 var _current_compass_dir: Constants.CompassDir = Constants.CompassDir.NORTH
 var _fsm_controller: FsmController
 

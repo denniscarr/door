@@ -32,6 +32,8 @@ func _create_room(coordinates: Vector2) -> Room:
 
 
 func _do_enter_room_sequence(dir: Constants.CompassDir):
+	_player.allow_input = false
+
 	match dir:
 		Constants.CompassDir.NORTH:
 			_player_coordinates.y -= 1
@@ -52,6 +54,7 @@ func _do_enter_room_sequence(dir: Constants.CompassDir):
 
 	await _player.entered_room
 
+	_player.allow_input = true
 	next_room.close_opening_after_entering(dir)
 	_current_room.queue_free()
 	_current_room = next_room
