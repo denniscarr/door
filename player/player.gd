@@ -45,6 +45,9 @@ func _define_idle_state() -> FsmState:
 	var state := FsmState.new()
 
 	state.input_callback = func(event: InputEvent):
+		if not allow_input:
+			return
+
 		if event.is_action_pressed("turn_left"):
 			_fsm_controller.switch_state(State.TURNING_LEFT)
 		elif event.is_action_pressed("turn_right"):
