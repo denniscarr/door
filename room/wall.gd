@@ -3,7 +3,7 @@ extends Node3D
 
 @export var _door_tile_1: MeshInstance3D
 @export var _door_tile_2: MeshInstance3D
-@export var _door: Node
+@export var _door: Door
 
 var has_door: bool:
 	get:
@@ -22,10 +22,7 @@ func do_open_door():
 	if not _has_door:
 		return
 
-	# Temp, replace with better animation eventually
-	await get_tree().create_timer(0.5).timeout
-	_door.visible = false
-	await get_tree().create_timer(0.5).timeout
+	await _door.do_open()
 
 
 ## Use this to force an opening during the door transition
