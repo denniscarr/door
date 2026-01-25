@@ -2,6 +2,7 @@ class_name Player
 extends Node3D
 
 signal request_move(dir: Constants.CompassDir)
+signal entered_room
 
 enum State {
 	IDLE,
@@ -19,11 +20,16 @@ func _ready():
 	_fsm_controller.register_state(State.IDLE, _define_idle_state())
 	_fsm_controller.register_state(State.TURNING_LEFT, _define_turning_left_state())
 	_fsm_controller.register_state(State.TURNING_RIGHT, _define_turning_right_state())
+	_fsm_controller.register_state(State.MOVING_FORWARD, _define_moving_forward_state())
 	_fsm_controller.switch_state(State.IDLE)
 
 
 func _input(event: InputEvent):
 	_fsm_controller.input(event)
+
+
+func move_to_next_room():
+	_fsm_controller.switch_state(State.MOVING_FORWARD)
 
 
 func _create_turning_tween(target_angle: float) -> Tween:
@@ -91,6 +97,13 @@ func _define_moving_forward_state() -> FsmState:
 	var state := FsmState.new()
 
 	state.enter_callback = func():
-		pass
+		var target_pos := global_position
+		target_pos += -transform.basis.z * Constants.ROOM_SIZE
+		var move_tween := create_tween()
+		move_tween.tween_property(self, "global_position", target_pos, 5.0)
+		move_tween.tween_callback(_fsm_controller.switch_state.bind(State.IDLE))
+
+	state.exit_callback = func():
+		entered_room.emit()
 
 	return state

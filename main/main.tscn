@@ -4,10 +4,11 @@
 [ext_resource type="Script" uid="uid://ba4jd4ynh4bvu" path="res://main/main.gd" id="1_pjrb6"]
 [ext_resource type="PackedScene" uid="uid://ddxdkvqstcq6o" path="res://room/room.tscn" id="3_xwkvk"]
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("_starting_room")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("_starting_room", "_player")]
 script = ExtResource("1_pjrb6")
 _starting_room = NodePath("Room")
 _room_scene = ExtResource("3_xwkvk")
+_player = NodePath("Player")
 _starting_seed_y = 46
 
 [node name="Player" parent="." instance=ExtResource("1_53q0u")]
