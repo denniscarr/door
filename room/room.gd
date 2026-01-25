@@ -1,5 +1,5 @@
 class_name Room
-extends Node
+extends Node3D
 
 @export var _wall_n: Wall
 @export var _wall_s: Wall
