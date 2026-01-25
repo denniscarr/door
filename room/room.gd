@@ -12,7 +12,7 @@ func initialize(rng_seed: int):
 	seed(rng_seed)
 	print("Generating room with seed: %s" % rng_seed)
 
-	var num_doors := randi_range(2, 4)
+	var num_doors := randi_range(1, 4)
 	print("Number of doors: %s" % num_doors)
 
 	var possible_dirs := [
