@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RoomAssetLibrary" load_steps=18 format=3 uid="uid://cavfoqyctlf7m"]
+
+[ext_resource type="PackedScene" uid="uid://lopimxu8rykt" path="res://room_objects/anime_girl.tscn" id="1_4bfdh"]
+[ext_resource type="Script" uid="uid://brrxbhc5kbc32" path="res://room_objects/room_asset_library.gd" id="1_w6h77"]
+[ext_resource type="PackedScene" uid="uid://bbpig78r7raw3" path="res://room_objects/bed_1.tscn" id="2_o5ivm"]
+[ext_resource type="PackedScene" uid="uid://bguqd05n4fqv6" path="res://room_objects/bench.tscn" id="3_k41yn"]
+[ext_resource type="PackedScene" uid="uid://btgpmfdqxw484" path="res://room_objects/car_1.tscn" id="4_irkte"]
+[ext_resource type="PackedScene" uid="uid://b124fx1rboqtj" path="res://room_objects/cat.tscn" id="5_4dbx5"]
+[ext_resource type="PackedScene" uid="uid://b7uqdqydjguvu" path="res://room_objects/eyeball.tscn" id="6_ojsam"]
+[ext_resource type="PackedScene" uid="uid://cu7p3wdg1i08g" path="res://room_objects/grass_patch.tscn" id="7_2jqp1"]
+[ext_resource type="PackedScene" uid="uid://sekvyt2fpopa" path="res://room_objects/gun.tscn" id="8_nbf76"]
+[ext_resource type="PackedScene" uid="uid://c5ty40chs06fm" path="res://room_objects/hand.tscn" id="9_h1kh2"]
+[ext_resource type="PackedScene" uid="uid://41yyr3yxaedp" path="res://room_objects/heart.tscn" id="10_elyl2"]
+[ext_resource type="PackedScene" uid="uid://bjcub4xhofith" path="res://room_objects/moon.tscn" id="11_237q5"]
+[ext_resource type="PackedScene" uid="uid://bhm6uwxerbkrj" path="res://room_objects/paint_horse.tscn" id="12_xqpos"]
+[ext_resource type="PackedScene" uid="uid://ble3di6uw3nyl" path="res://room_objects/plant_1.tscn" id="13_cpsnv"]
+[ext_resource type="PackedScene" uid="uid://c0lwlq5fpu3px" path="res://room_objects/plant_2.tscn" id="14_qkcb2"]
+[ext_resource type="PackedScene" uid="uid://dlbd8h2ncws66" path="res://room_objects/plant_3.tscn" id="15_wfl4m"]
+[ext_resource type="PackedScene" uid="uid://cl8rin0y31sj4" path="res://room_objects/rock_1.tscn" id="16_00cyy"]
+
+[resource]
+script = ExtResource("1_w6h77")
+_room_object_scenes = Array[PackedScene]([ExtResource("1_4bfdh"), ExtResource("2_o5ivm"), ExtResource("3_k41yn"), ExtResource("4_irkte"), ExtResource("5_4dbx5"), ExtResource("6_ojsam"), ExtResource("7_2jqp1"), ExtResource("8_nbf76"), ExtResource("9_h1kh2"), ExtResource("10_elyl2"), ExtResource("11_237q5"), ExtResource("12_xqpos"), ExtResource("13_cpsnv"), ExtResource("14_qkcb2"), ExtResource("15_wfl4m"), ExtResource("16_00cyy")])
+metadata/_custom_type_script = "uid://brrxbhc5kbc32"

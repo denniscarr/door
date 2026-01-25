@@ -1,17 +1,24 @@
 class_name Room
 extends Node3D
 
+@export var _spot_light: SpotLight3D
+
+@export_category("Walls")
 @export var _wall_n: Wall
 @export var _wall_s: Wall
 @export var _wall_e: Wall
 @export var _wall_w: Wall
-@export var _spot_light: SpotLight3D
+
+@export_category("Room Objects")
+@export var _asset_library: RoomAssetLibrary
+@export var _room_object_holders: Array[Node3D]
 
 
 func initialize(rng_seed: int):
 	seed(rng_seed)
 	print("Generating room with seed: %s" % rng_seed)
 
+	# Randomize doors
 	var num_doors := randi_range(1, 4)
 	print("Number of doors: %s" % num_doors)
 
@@ -28,6 +35,13 @@ func initialize(rng_seed: int):
 		var wall := _get_wall_by_dir(possible_dirs[i])
 		wall.add_door()
 
+	# Randomize room objects
+	var holder := _room_object_holders.pick_random() as Node3D
+	var object := _asset_library.room_object_scenes.pick_random().instantiate() as Node3D
+	holder.add_child(object)
+	object.rotate_y(randf_range(-180.0, 180.0))
+
+	# Randomize lighting
 	_spot_light.light_color = Color.from_hsv(randf(), 0.2, 0.8)
 
 
