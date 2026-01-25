@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5ty40chs06fm"]
+
+[ext_resource type="ArrayMesh" uid="uid://c370mr31slgh5" path="res://assets/models/hand_v1/16834_hand_v1_NEW.obj" id="1_6s7qc"]
+
+[node name="Hand" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("1_6s7qc")

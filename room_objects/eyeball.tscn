@@ -1,0 +1,26 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7uqdqydjguvu"]
+
+[ext_resource type="PackedScene" uid="uid://dwjksrqu6u1ds" path="res://assets/models/eye/eyeball.blend" id="1_smhsj"]
+[ext_resource type="Texture2D" uid="uid://dotptgvvgmvys" path="res://assets/models/eye/textures/Eye_D.jpg" id="2_xk3lx"]
+[ext_resource type="Texture2D" uid="uid://c2tohsg5tcvgu" path="res://assets/models/eye/textures/REF 1.jpg" id="3_6cd0b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwmay"]
+albedo_texture = ExtResource("2_xk3lx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_haccm"]
+albedo_texture = ExtResource("3_6cd0b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pjw5"]
+albedo_texture = ExtResource("2_xk3lx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqrw7"]
+albedo_texture = ExtResource("2_xk3lx")
+
+[node name="Eyeball" instance=ExtResource("1_smhsj")]
+
+[node name="eyeball_1" parent="." index="0"]
+transform = Transform3D(0.25, 0, 0, 0, -1.0927847e-08, -0.25, 0, 0.25, -1.0927847e-08, 0, 1, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_rwmay")
+surface_material_override/1 = SubResource("StandardMaterial3D_haccm")
+surface_material_override/2 = SubResource("StandardMaterial3D_6pjw5")
+surface_material_override/3 = SubResource("StandardMaterial3D_pqrw7")

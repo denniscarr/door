@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbpig78r7raw3"]
+
+[ext_resource type="ArrayMesh" uid="uid://bh6dcbc0v831s" path="res://assets/models/Full_Size_Bed_with_White_Sheets_Black_V13/Full_Size_Bed_with_White_Sheets_Black_V1.obj" id="1_ls00y"]
+
+[node name="Bed1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.36748087, 0)
+mesh = ExtResource("1_ls00y")

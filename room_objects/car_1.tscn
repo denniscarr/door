@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://btgpmfdqxw484"]
+
+[ext_resource type="PackedScene" uid="uid://ds106c5enuw8e" path="res://assets/models/mercedez-benz/uploads_files_2787791_Mercedes+Benz+GLS+580.fbx" id="1_dpsvg"]
+
+[node name="Car1" type="Node3D"]
+
+[node name="uploads_files_2787791_Mercedes+Benz+GLS+580" parent="." instance=ExtResource("1_dpsvg")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.8883973, 0, 2.0372064)

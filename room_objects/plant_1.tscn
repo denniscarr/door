@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ble3di6uw3nyl"]
+
+[ext_resource type="PackedScene" uid="uid://cpf286of36cyi" path="res://assets/models/eb_house_plant_01/eb_house_plant_01.fbx" id="1_ukvmo"]
+
+[node name="Plant1" type="Node3D"]
+
+[node name="eb_house_plant_01" parent="." instance=ExtResource("1_ukvmo")]

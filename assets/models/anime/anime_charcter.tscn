@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8ehmqfap5sax"]
+
+[ext_resource type="PackedScene" uid="uid://b485ec3d0o7sm" path="res://assets/models/anime/Anime_charcter.blend" id="1_p5jxk"]
+[ext_resource type="Texture2D" uid="uid://caapeblpv1sbx" path="res://assets/models/anime/textures.png" id="2_8psn1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dcdge"]
+albedo_texture = ExtResource("2_8psn1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ijos"]
+albedo_texture = ExtResource("2_8psn1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7ddr"]
+albedo_texture = ExtResource("2_8psn1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqn4x"]
+albedo_texture = ExtResource("2_8psn1")
+
+[node name="Anime_charcter" instance=ExtResource("1_p5jxk")]
+
+[node name="Cabeza_001" parent="Armature" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_dcdge")
+surface_material_override/1 = SubResource("StandardMaterial3D_5ijos")
+
+[node name="Cuerpo" parent="Armature" index="1"]
+surface_material_override/1 = SubResource("StandardMaterial3D_y7ddr")
+
+[node name="Cuerpo_001" parent="Armature" index="2"]
+surface_material_override/1 = SubResource("StandardMaterial3D_y7ddr")
+
+[node name="export_001" parent="Armature" index="5"]
+surface_material_override/1 = SubResource("StandardMaterial3D_wqn4x")

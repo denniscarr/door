@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://btoietlwinrjh"
+path="res://.godot/imported/16267_American_Paint_Horse_Nuetral_new.obj-28a99fe5200cfc2d4cf6c78eb14a4430.mesh"
+
+[deps]
+
+files=["res://.godot/imported/16267_American_Paint_Horse_Nuetral_new.obj-28a99fe5200cfc2d4cf6c78eb14a4430.mesh"]
+
+source_file="res://assets/models/American_Paint_Horse_Nuetral_V1/16267_American_Paint_Horse_Nuetral_new.obj"
+dest_files=["res://.godot/imported/16267_American_Paint_Horse_Nuetral_new.obj-28a99fe5200cfc2d4cf6c78eb14a4430.mesh", "res://.godot/imported/16267_American_Paint_Horse_Nuetral_new.obj-28a99fe5200cfc2d4cf6c78eb14a4430.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(0.02, 0.02, 0.02)
+offset_mesh=Vector3(0, 0.3, 0)
+force_disable_mesh_compression=false

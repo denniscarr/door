@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu7p3wdg1i08g"]
+
+[ext_resource type="ArrayMesh" uid="uid://bvckvi1vdxfqa" path="res://assets/models/Rectangular_Grass_Patch_L3/10450_Rectangular_Grass_Patch_v1_iterations-2.obj" id="1_j1n7s"]
+
+[node name="GrassPatch" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("1_j1n7s")

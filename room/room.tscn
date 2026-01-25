@@ -35,3 +35,17 @@ light_energy = 2.0
 spot_range = 7.0
 spot_attenuation = 1.5
 spot_angle = 89.0
+
+[node name="RoomObjectHolders" type="Node3D" parent="."]
+
+[node name="RoomObjectHolderNW" type="Node3D" parent="RoomObjectHolders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="RoomObjectHolderNE" type="Node3D" parent="RoomObjectHolders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="RoomObjectHolderSW" type="Node3D" parent="RoomObjectHolders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="RoomObjectHolderSE" type="Node3D" parent="RoomObjectHolders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)

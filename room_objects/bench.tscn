@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bguqd05n4fqv6"]
+
+[ext_resource type="PackedScene" uid="uid://d0m5432uq1kep" path="res://assets/models/Bench/Bench.fbx" id="1_41wxq"]
+
+[node name="Bench" type="Node3D"]
+
+[node name="Bench" parent="." instance=ExtResource("1_41wxq")]

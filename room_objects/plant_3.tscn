@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlbd8h2ncws66"]
+
+[ext_resource type="PackedScene" uid="uid://c510l6lr2xtkm" path="res://assets/models/IndoorPotPlant/indoor plant_02_+2.fbx" id="1_hudx8"]
+
+[node name="Plant3" type="Node3D"]
+
+[node name="indoor plant_02_+2" parent="." instance=ExtResource("1_hudx8")]

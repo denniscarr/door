@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0lwlq5fpu3px"]
+
+[ext_resource type="PackedScene" uid="uid://bib8pn6osd0jr" path="res://assets/models/Indoor plant 3/Low-Poly Plant_.fbx" id="1_qvuhb"]
+
+[node name="Plant2" type="Node3D"]
+
+[node name="Low-Poly Plant_" parent="." instance=ExtResource("1_qvuhb")]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjcub4xhofith"]
+
+[ext_resource type="ArrayMesh" uid="uid://b31rcfqhl6d8l" path="res://assets/models/moon/Moon 2K.obj" id="1_0wso7"]
+[ext_resource type="Texture2D" uid="uid://ccafh35uolkh1" path="res://assets/models/moon/Textures/Diffuse_2K.png" id="2_uprjn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2lkj2"]
+albedo_texture = ExtResource("2_uprjn")
+
+[node name="Moon" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = ExtResource("1_0wso7")
+surface_material_override/0 = SubResource("StandardMaterial3D_2lkj2")

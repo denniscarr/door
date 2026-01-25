@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhm6uwxerbkrj"]
+
+[ext_resource type="ArrayMesh" uid="uid://btoietlwinrjh" path="res://assets/models/American_Paint_Horse_Nuetral_V1/16267_American_Paint_Horse_Nuetral_new.obj" id="1_g3gcj"]
+
+[node name="PaintHorse" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("1_g3gcj")

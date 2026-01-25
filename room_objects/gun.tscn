@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://sekvyt2fpopa"]
+
+[ext_resource type="PackedScene" uid="uid://b6bbc6j30xnbo" path="res://assets/models/Gun _obj/Gun.dae" id="1_a6k23"]
+
+[node name="Gun" instance=ExtResource("1_a6k23")]
+
+[node name="Cube_007" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
