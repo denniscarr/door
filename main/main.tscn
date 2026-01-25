@@ -1,8 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj8vc7neoh76n"]
+[gd_scene load_steps=11 format=3 uid="uid://bj8vc7neoh76n"]
 
 [ext_resource type="PackedScene" uid="uid://dfiw4rmih8jur" path="res://player/player.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://ba4jd4ynh4bvu" path="res://main/main.gd" id="1_pjrb6"]
 [ext_resource type="PackedScene" uid="uid://ddxdkvqstcq6o" path="res://room/room.tscn" id="3_xwkvk"]
+[ext_resource type="Script" uid="uid://bt6owht6ug8ue" path="res://messages/typing_interface.gd" id="4_3wy1v"]
+[ext_resource type="FontFile" uid="uid://mhaagu6d7akt" path="res://assets/fonts/SwirlyCanalope_PERSONAL_USE_ONLY.otf" id="4_c651c"]
+[ext_resource type="StyleBox" uid="uid://c3ir38qmespdx" path="res://messages/message_button.tres" id="6_kfbq2"]
+[ext_resource type="StyleBox" uid="uid://vci85pnh8iex" path="res://messages/message_button_hover.tres" id="7_4dugh"]
+[ext_resource type="StyleBox" uid="uid://b0skxvdyg0lwp" path="res://messages/message_button_pressed.tres" id="7_67ri8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwkvk"]
+bg_color = Color(0.9974305, 0.95126265, 0.8297298, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3wy1v"]
+line_spacing = -4.0
+font = ExtResource("4_c651c")
+font_size = 48
+font_color = Color(0.02745098, 0.02745098, 0.02745098, 0.7019608)
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("_starting_room", "_player")]
 script = ExtResource("1_pjrb6")
@@ -14,3 +28,115 @@ _starting_seed_y = 46
 [node name="Player" parent="." instance=ExtResource("1_53q0u")]
 
 [node name="Room" parent="." instance=ExtResource("3_xwkvk")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NoteUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TypingInterface" type="Control" parent="CanvasLayer/NoteUI" node_paths=PackedStringArray("_input_label", "_timer_label", "_char_count_label", "_note_panel", "_done_button", "_submit_button")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_3wy1v")
+_input_label = NodePath("TypingNote/MarginContainer/VBoxContainer/InputLabel")
+_timer_label = NodePath("TypingNote/MarginContainer/VBoxContainer/HBoxContainer/Timer")
+_char_count_label = NodePath("TypingNote/MarginContainer/VBoxContainer/HBoxContainer/CharCounter")
+_note_panel = NodePath("TypingNote")
+_done_button = NodePath("TypingNote/MarginContainer/VBoxContainer/DoneButton")
+_submit_button = NodePath("TypingNote/MarginContainer/VBoxContainer/SubmitButton")
+
+[node name="TypingNote" type="PanelContainer" parent="CanvasLayer/NoteUI/TypingInterface"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -187.17542
+offset_right = 176.0
+offset_bottom = 186.82458
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(176, 187)
+theme_override_styles/panel = SubResource("StyleBoxFlat_xwkvk")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/NoteUI/TypingInterface/TypingNote"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/NoteUI/TypingInterface/TypingNote/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/NoteUI/TypingInterface/TypingNote/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 0.6392157)
+text = "Type your message"
+
+[node name="InputLabel" type="Label" parent="CanvasLayer/NoteUI/TypingInterface/TypingNote/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(312, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 0.7607843)
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("4_c651c")
+theme_override_font_sizes/font_size = 48
+text = "This is placeholder text. And i would like to make sure i am happy and stuff."
+label_settings = SubResource("LabelSettings_3wy1v")
+autowrap_mode = 3
+
+[node name="DoneButton" type="Button" parent="CanvasLayer/NoteUI/TypingInterface/TypingNote/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.31764707, 0.3019608, 0.26666668, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.31764707, 0.3019608, 0.26666668, 1)
+theme_override_styles/normal = ExtResource("6_kfbq2")
+theme_override_styles/pressed = ExtResource("7_67ri8")
+theme_override_styles/hover = ExtResource("7_4dugh")
+text = "Done"
+
+[node name="SubmitButton" type="Button" parent="CanvasLayer/NoteUI/TypingInterface/TypingNote/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.31764707, 0.3019608, 0.26666668, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.31764707, 0.3019608, 0.26666668, 1)
+theme_override_styles/normal = ExtResource("6_kfbq2")
+theme_override_styles/pressed = ExtResource("7_67ri8")
+theme_override_styles/hover = ExtResource("7_4dugh")
+text = "Submit"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/NoteUI/TypingInterface/TypingNote/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Timer" type="Label" parent="CanvasLayer/NoteUI/TypingInterface/TypingNote/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 0.7607843)
+text = "Time Left: 15"
+
+[node name="Spacer" type="Control" parent="CanvasLayer/NoteUI/TypingInterface/TypingNote/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharCounter" type="Label" parent="CanvasLayer/NoteUI/TypingInterface/TypingNote/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 0.7607843)
+text = "25/50"
