@@ -5,13 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://npd4rrqsbllc" path="res://room/wall.tscn" id="2_j33j0"]
 [ext_resource type="Resource" uid="uid://cavfoqyctlf7m" path="res://room_objects/room_asset_library.tres" id="2_tku2a"]
 
-[node name="Room" type="Node3D" node_paths=PackedStringArray("_spot_light", "_wall_n", "_wall_s", "_wall_e", "_wall_w", "_room_object_holders")]
+[node name="Room" type="Node3D" node_paths=PackedStringArray("_spot_light", "_wall_n", "_wall_s", "_wall_e", "_wall_w", "_floor", "_ceiling", "_room_object_holders")]
 script = ExtResource("1_fsy70")
 _spot_light = NodePath("SpotLight3D")
 _wall_n = NodePath("WallN")
 _wall_s = NodePath("WallS")
 _wall_e = NodePath("WallE")
 _wall_w = NodePath("WallW")
+_floor = NodePath("Floor")
+_ceiling = NodePath("Ceiling")
 _asset_library = ExtResource("2_tku2a")
 _room_object_holders = [NodePath("RoomObjectHolders/RoomObjectHolderNW"), NodePath("RoomObjectHolders/RoomObjectHolderNE"), NodePath("RoomObjectHolders/RoomObjectHolderSW"), NodePath("RoomObjectHolders/RoomObjectHolderSE")]
 

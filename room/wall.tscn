@@ -5,10 +5,9 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_v321d"]
 
-[node name="Wall" type="Node3D" node_paths=PackedStringArray("_door_tile_1", "_door_tile_2", "_door")]
+[node name="Wall" type="Node3D" node_paths=PackedStringArray("_door_tiles", "_door")]
 script = ExtResource("1_ah6et")
-_door_tile_1 = NodePath("0,3")
-_door_tile_2 = NodePath("1,3")
+_door_tiles = [NodePath("0,3"), NodePath("1,3")]
 _door = NodePath("Door")
 
 [node name="0,0" type="MeshInstance3D" parent="."]
