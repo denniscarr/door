@@ -142,7 +142,7 @@ func _define_typing_state() -> FsmState:
 
 		if _CHARS_BY_KEYCODE.has(key_event.keycode):
 			_add_typed_char(_CHARS_BY_KEYCODE[key_event.keycode])
-		else:
+		elif key_event.keycode == KEY_BACKSPACE || key_event.keycode == KEY_DELETE:
 			_do_error_anim()
 
 		print(_chars_typed)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddxdkvqstcq6o"]
+[gd_scene load_steps=6 format=3 uid="uid://ddxdkvqstcq6o"]
 
 [ext_resource type="Script" uid="uid://oenc27baf5lh" path="res://room/room.gd" id="1_fsy70"]
 [ext_resource type="PackedScene" uid="uid://cdptvn1ipqlra" path="res://room/floor_or_ceiling.tscn" id="1_ppkfq"]
 [ext_resource type="PackedScene" uid="uid://npd4rrqsbllc" path="res://room/wall.tscn" id="2_j33j0"]
 [ext_resource type="Resource" uid="uid://cavfoqyctlf7m" path="res://room_objects/room_asset_library.tres" id="2_tku2a"]
+[ext_resource type="PackedScene" uid="uid://cd23us0npg4gg" path="res://room/room_object_holder.tscn" id="5_qx3y5"]
 
 [node name="Room" type="Node3D" node_paths=PackedStringArray("_spot_light", "_wall_n", "_wall_s", "_wall_e", "_wall_w", "_floor", "_ceiling", "_room_object_holders")]
 script = ExtResource("1_fsy70")
@@ -43,14 +44,14 @@ spot_angle = 89.0
 
 [node name="RoomObjectHolders" type="Node3D" parent="."]
 
-[node name="RoomObjectHolderNW" type="Node3D" parent="RoomObjectHolders"]
+[node name="RoomObjectHolderNW" parent="RoomObjectHolders" instance=ExtResource("5_qx3y5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
 
-[node name="RoomObjectHolderNE" type="Node3D" parent="RoomObjectHolders"]
+[node name="RoomObjectHolderNE" parent="RoomObjectHolders" instance=ExtResource("5_qx3y5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 
-[node name="RoomObjectHolderSW" type="Node3D" parent="RoomObjectHolders"]
+[node name="RoomObjectHolderSW" parent="RoomObjectHolders" instance=ExtResource("5_qx3y5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
 
-[node name="RoomObjectHolderSE" type="Node3D" parent="RoomObjectHolders"]
+[node name="RoomObjectHolderSE" parent="RoomObjectHolders" instance=ExtResource("5_qx3y5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)

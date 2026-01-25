@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bj8vc7neoh76n"]
+[gd_scene load_steps=12 format=3 uid="uid://bj8vc7neoh76n"]
 
 [ext_resource type="PackedScene" uid="uid://dfiw4rmih8jur" path="res://player/player.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://ba4jd4ynh4bvu" path="res://main/main.gd" id="1_pjrb6"]
+[ext_resource type="Environment" uid="uid://dqwtos2marag3" path="res://global/global_environment.tres" id="3_grrlh"]
 [ext_resource type="PackedScene" uid="uid://ddxdkvqstcq6o" path="res://room/room.tscn" id="3_xwkvk"]
 [ext_resource type="Script" uid="uid://bt6owht6ug8ue" path="res://messages/typing_interface.gd" id="4_3wy1v"]
 [ext_resource type="FontFile" uid="uid://mhaagu6d7akt" path="res://assets/fonts/SwirlyCanalope_PERSONAL_USE_ONLY.otf" id="4_c651c"]
@@ -24,6 +25,9 @@ _starting_room = NodePath("Room")
 _room_scene = ExtResource("3_xwkvk")
 _player = NodePath("Player")
 _starting_seed_y = 46
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_grrlh")
 
 [node name="Player" parent="." instance=ExtResource("1_53q0u")]
 
@@ -55,6 +59,7 @@ _done_button = NodePath("TypingNote/MarginContainer/VBoxContainer/DoneButton")
 _submit_button = NodePath("TypingNote/MarginContainer/VBoxContainer/SubmitButton")
 
 [node name="TypingNote" type="PanelContainer" parent="CanvasLayer/NoteUI/TypingInterface"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

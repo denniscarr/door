@@ -13,7 +13,7 @@ extends Node3D
 
 @export_category("Room Objects")
 @export var _asset_library: RoomAssetLibrary
-@export var _room_object_holders: Array[Node3D]
+@export var _room_object_holders: Array[RoomObjectHolder]
 
 
 func initialize(rng_seed: int):
@@ -38,9 +38,9 @@ func initialize(rng_seed: int):
 		wall.add_door()
 
 	# Randomize room objects
-	var holder := _room_object_holders.pick_random() as Node3D
+	var holder := _room_object_holders.pick_random() as RoomObjectHolder
 	var object := _asset_library.room_object_scenes.pick_random().instantiate() as Node3D
-	holder.add_child(object)
+	holder.add_object(object)
 	object.rotate_y(randf_range(-180.0, 180.0))
 
 	# Randomize textures
