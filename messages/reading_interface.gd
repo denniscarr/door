@@ -1,6 +1,8 @@
 class_name ReadingInterface
 extends Control
 
+signal finished
+
 @export var _note_panel: PanelContainer
 @export var _text_label: Label
 @export var _done_button: Button
@@ -18,3 +20,4 @@ func initialize(message_text: String):
 func _on_done_button_pressed():
     if _note_panel.visible:
         _note_panel.visible = false
+        finished.emit()

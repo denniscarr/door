@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ba4jd4ynh4bvu" path="res://main/main.gd" id="1_pjrb6"]
 [ext_resource type="Environment" uid="uid://dqwtos2marag3" path="res://global/global_environment.tres" id="3_grrlh"]
 [ext_resource type="PackedScene" uid="uid://ddxdkvqstcq6o" path="res://room/room.tscn" id="3_xwkvk"]
-[ext_resource type="Script" uid="uid://c0biam0d8xh0o" path="res://messages/messge_placement_helper.gd" id="4_67ri8"]
+[ext_resource type="Script" uid="uid://c0biam0d8xh0o" path="res://messages/message_placement_helper.gd" id="4_67ri8"]
 [ext_resource type="PackedScene" uid="uid://buqq36qfpc44w" path="res://messages/message.tscn" id="5_4dugh"]
 [ext_resource type="PackedScene" uid="uid://biabcd4oghelj" path="res://messages/typing_interface.tscn" id="5_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://cocbtwhd6x0bm" path="res://messages/reading_interface.tscn" id="6_4dugh"]
@@ -31,7 +31,6 @@ environment = ExtResource("3_grrlh")
 [node name="Room" parent="." instance=ExtResource("3_xwkvk")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="NoteUI" type="Control" parent="CanvasLayer"]
 layout_mode = 3

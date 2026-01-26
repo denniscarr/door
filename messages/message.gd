@@ -1,7 +1,7 @@
 class_name Message
 extends Node3D
 
-signal opened(message: Message)
+signal opened(message_text: String)
 
 @export var _mesh_instance: MeshInstance3D
 @export var _body: StaticBody3D
@@ -20,7 +20,7 @@ func _input(event: InputEvent):
 
 	var mouse_event := event as InputEventMouseButton
 	if mouse_event.pressed:
-		opened.emit(self)
+		opened.emit(_message_text)
 
 
 func set_placed(message_text: String):

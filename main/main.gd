@@ -22,11 +22,13 @@ var _fsm_controller: FsmController
 func _ready():
 	_fsm_controller = FsmController.new()
 	_fsm_controller.register_state(State.EXPLORING, _define_exploring_state())
+	_fsm_controller.register_state(State.READING, _define_reading_state())
 	_fsm_controller.register_state(State.TYPING, _define_typing_state())
 	_fsm_controller.register_state(State.PLACING_MESSAGE, _define_placing_message_state())
 
 	_current_room = _starting_room
 	_starting_room.initialize(_get_seed())
+	_message_helper.set_room(_get_seed())
 
 	_fsm_controller.switch_state(State.PLACING_MESSAGE)
 
@@ -70,6 +72,7 @@ func _do_enter_room_sequence(dir: Constants.CompassDir):
 	var next_room := _create_room(_player_coordinates)
 	next_room.initialize(_get_seed())
 	next_room.create_opening_for_entering(dir)
+	_message_helper.set_room(_get_seed())
 
 	await _current_room.do_open_door(dir)
 
@@ -95,6 +98,25 @@ func _define_exploring_state() -> FsmState:
 				_do_enter_room_sequence(facing)
 			else:
 				_fsm_controller.switch_state(State.TYPING)
+	)
+
+	state.add_signal_callback(
+		_message_helper.message_opened,
+		func(message_text: String):
+			_reading_interface.initialize(message_text)
+			_fsm_controller.switch_state(State.READING)
+	)
+
+	return state
+
+
+func _define_reading_state() -> FsmState:
+	var state := FsmState.new()
+
+	state.enter_callback = func(): _player.allow_input = false
+
+	state.add_signal_callback(
+		_reading_interface.finished, func(): _fsm_controller.switch_state(State.EXPLORING)
 	)
 
 	return state
