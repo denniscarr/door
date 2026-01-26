@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cglsn42poctb7"]
+
+[ext_resource type="PackedScene" uid="uid://mdwkjcwpt064" path="res://assets/models/eb_lamp_01/eb_lamp_01.fbx" id="1_u08qu"]
+[ext_resource type="Material" uid="uid://cv4nsqjpr3sxy" path="res://assets/models/eb_lamp_01/eb_lamp_01.tres" id="2_5qied"]
+
+[node name="eb_lamp_01" instance=ExtResource("1_u08qu")]
+
+[node name="a_low" parent="eb_lamp_01_low" index="0"]
+surface_material_override/0 = ExtResource("2_5qied")
+
+[node name="b_low" parent="eb_lamp_01_low" index="1"]
+surface_material_override/0 = ExtResource("2_5qied")
+
+[node name="c_low" parent="eb_lamp_01_low" index="2"]
+surface_material_override/0 = ExtResource("2_5qied")
