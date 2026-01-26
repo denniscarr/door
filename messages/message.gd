@@ -15,7 +15,7 @@ var _message_text: String = ""
 
 
 func _input(event: InputEvent):
-	if not CursorManager.cursor_active:
+	if not (CursorManager.cursor_active and _mouse_sensor.is_mouse_over):
 		return
 
 	if not event is InputEventMouseButton:
