@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://d0800u6n2s2rx"]
+
+[ext_resource type="Texture2D" uid="uid://cvfenjn4f1grj" path="res://assets/models/eb_nightstand_01/eb_nightstand_01_c.tga" id="1_06yx6"]
+[ext_resource type="Texture2D" uid="uid://cuoevt1dsb1ji" path="res://assets/models/eb_nightstand_01/eb_nightstand_01_g.tga" id="2_22emu"]
+[ext_resource type="Texture2D" uid="uid://bce2vsy3xw8kf" path="res://assets/models/eb_nightstand_01/eb_nightstand_01_n.tga" id="3_l1hlp"]
+
+[resource]
+albedo_texture = ExtResource("1_06yx6")
+metallic = 1.0
+metallic_texture = ExtResource("2_22emu")
+metallic_texture_channel = 1
+roughness_texture = ExtResource("2_22emu")
+normal_enabled = true
+normal_texture = ExtResource("3_l1hlp")

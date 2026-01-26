@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://pbsnvyfx2lgb"]
+
+[ext_resource type="PackedScene" uid="uid://drh5c1qiif7ei" path="res://assets/models/Clock_Constraints_for_Animations/Clock_fbx.fbx" id="1_3c11n"]
+[ext_resource type="Texture2D" uid="uid://btlfhl48vfwnh" path="res://assets/models/Clock_Constraints_for_Animations/textures/steel.jpg" id="2_f1jgk"]
+[ext_resource type="Texture2D" uid="uid://cfnm1uuf6n7ih" path="res://assets/models/Clock_Constraints_for_Animations/textures/steel_nor.jpg" id="3_1tsn5"]
+[ext_resource type="Texture2D" uid="uid://dvnpqmk1ws8gk" path="res://assets/models/Clock_Constraints_for_Animations/textures/Uhr_ohne_Zeiger.jpg" id="4_3bbte"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e68s3"]
+albedo_texture = ExtResource("2_f1jgk")
+normal_enabled = true
+normal_texture = ExtResource("3_1tsn5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2b6r"]
+albedo_texture = ExtResource("4_3bbte")
+
+[node name="Clock_fbx" instance=ExtResource("1_3c11n")]
+
+[node name="Stunden" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.9999999, 0, -0.9999999, -4.3711385e-08, 0.02989018, 1, 0)
+
+[node name="Minuten" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -0.604724, -0.79643476, 0, 0.79643476, -0.604724, 0.03777033, 1, 0)
+
+[node name="Sekunden" parent="." index="2"]
+transform = Transform3D(1, 1.5159894e-21, 8.2053024e-19, 1.1342824e-19, 0.9901419, -0.14006698, -8.1265424e-19, 0.140067, 0.9901418, 0.02989018, 1, 0)
+
+[node name="Circle_016" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, -0.042329147, 1, 0.0010479576)
+surface_material_override/0 = SubResource("StandardMaterial3D_e68s3")
+
+[node name="Circle_000" parent="." index="4"]
+transform = Transform3D(1, 6.162975e-32, 2.693922e-39, 0, -4.3711385e-08, 0.99999994, 6.162976e-32, -0.99999994, -4.3711385e-08, -0.042329147, 1, 0.0010479576)
+surface_material_override/0 = SubResource("StandardMaterial3D_y2b6r")
+
+[node name="Cube" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0.04689598, 1, -1.0585412e-05)

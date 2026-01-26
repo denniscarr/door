@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b031o0y8x63bo"]
+
+[ext_resource type="PackedScene" uid="uid://og1k3xhgcyub" path="res://assets/models/eb_nightstand_01/eb_nightstand_01.fbx" id="1_184sm"]
+[ext_resource type="Material" uid="uid://d0800u6n2s2rx" path="res://assets/models/eb_nightstand_01/eb_nightstand_01.tres" id="2_g37g5"]
+
+[node name="eb_nightstand_01" instance=ExtResource("1_184sm")]
+
+[node name="a_low" parent="low" index="0"]
+surface_material_override/0 = ExtResource("2_g37g5")
+
+[node name="b_low" parent="low" index="1"]
+surface_material_override/0 = ExtResource("2_g37g5")
+
+[node name="c_low" parent="low" index="2"]
+surface_material_override/0 = ExtResource("2_g37g5")
+
+[node name="d_low" parent="low" index="3"]
+surface_material_override/0 = ExtResource("2_g37g5")
