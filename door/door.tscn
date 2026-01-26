@@ -1,10 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl0tg3wgdtic7"]
+[gd_scene load_steps=11 format=3 uid="uid://dl0tg3wgdtic7"]
 
 [ext_resource type="Script" uid="uid://ce60ky2aodicb" path="res://door/door.gd" id="1_plcny"]
+[ext_resource type="Texture2D" uid="uid://c1dvoyuj5kbwj" path="res://assets/textures/Tileable wood texture 2.jpg" id="2_1xxlg"]
+[ext_resource type="Texture2D" uid="uid://xnkltotrxma3" path="res://assets/textures/door_texture_by_ancientorange_d4ix003-fullview.jpg" id="2_rdd60"]
+[ext_resource type="Texture2D" uid="uid://cnkqefaa3xybd" path="res://assets/textures/Tileable bronze metal texture.jpg" id="3_08xnr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ah6et"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42tme"]
+albedo_texture = ExtResource("2_1xxlg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_08xnr"]
+albedo_texture = ExtResource("2_rdd60")
+uv1_scale = Vector3(2.94, 1.915, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_ah6et"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xxlg"]
+albedo_texture = ExtResource("3_08xnr")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_plcny"]
 size = Vector3(1.4619141, 2.2572632, 0.20507813)
@@ -16,14 +29,17 @@ _hinge = NodePath("Hinge")
 [node name="Head" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 2.05, 0)
 mesh = SubResource("BoxMesh_ah6et")
+surface_material_override/0 = SubResource("StandardMaterial3D_42tme")
 
 [node name="JambLeft" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 0.1, -0.55, 1, 0)
 mesh = SubResource("BoxMesh_ah6et")
+surface_material_override/0 = SubResource("StandardMaterial3D_42tme")
 
 [node name="JambRight" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0.55, 1, 0)
 mesh = SubResource("BoxMesh_ah6et")
+surface_material_override/0 = SubResource("StandardMaterial3D_42tme")
 
 [node name="Hinge" type="Node3D" parent="."]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.50566673, 0, 0)
@@ -32,11 +48,13 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.50566673
 transform = Transform3D(1.0265039, 0, 0, 0, 2, 0, 0, 0, 0.05611978, 0.49999994, 1, -0.04250326)
 mesh = SubResource("BoxMesh_ah6et")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_08xnr")
 
 [node name="Knob" type="MeshInstance3D" parent="Hinge"]
 transform = Transform3D(0.099999964, 0, 0, 0, -5.5918963e-09, -0.1, 0, 0.12792762, -4.371137e-09, 0.84874314, 0.8272992, -0.041472435)
 mesh = SubResource("CylinderMesh_ah6et")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1xxlg")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
