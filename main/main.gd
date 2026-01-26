@@ -130,6 +130,8 @@ func _define_exploring_state() -> FsmState:
 		_movement_interface.request_turn_left,
 		func():
 			_movement_interface.set_buttons_disabled(true)
+			CursorManager.set_cursor_active(false)
+			CursorManager.enable_env_highlighting(false)
 			_player.turn_left()
 	)
 
@@ -137,15 +139,21 @@ func _define_exploring_state() -> FsmState:
 		_movement_interface.request_turn_right,
 		func():
 			_movement_interface.set_buttons_disabled(true)
+			CursorManager.set_cursor_active(false)
+			CursorManager.enable_env_highlighting(false)
 			_player.turn_right()
 	)
 
 	state.add_signal_callback(
-		_movement_interface.request_post_message, func(): _fsm_controller.switch_state(State.TYPING)
+		_player.finished_turning,
+		func():
+			_movement_interface.set_buttons_disabled(false)
+			CursorManager.set_cursor_active(true)
+			CursorManager.enable_env_highlighting(true)
 	)
 
 	state.add_signal_callback(
-		_player.finished_turning, func(): _movement_interface.set_buttons_disabled(false)
+		_movement_interface.request_post_message, func(): _fsm_controller.switch_state(State.TYPING)
 	)
 
 	return state

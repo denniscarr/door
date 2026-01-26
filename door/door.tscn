@@ -9,11 +9,13 @@
 [sub_resource type="BoxMesh" id="BoxMesh_ah6et"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42tme"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("2_1xxlg")
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.13
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_08xnr"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("2_rdd60")
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.13
