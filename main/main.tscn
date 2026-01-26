@@ -1,22 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj8vc7neoh76n"]
+[gd_scene load_steps=9 format=3 uid="uid://bj8vc7neoh76n"]
 
 [ext_resource type="PackedScene" uid="uid://dfiw4rmih8jur" path="res://player/player.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://ba4jd4ynh4bvu" path="res://main/main.gd" id="1_pjrb6"]
 [ext_resource type="Environment" uid="uid://dqwtos2marag3" path="res://global/global_environment.tres" id="3_grrlh"]
 [ext_resource type="PackedScene" uid="uid://ddxdkvqstcq6o" path="res://room/room.tscn" id="3_xwkvk"]
+[ext_resource type="Script" uid="uid://c0biam0d8xh0o" path="res://messages/messge_placement_helper.gd" id="4_67ri8"]
 [ext_resource type="PackedScene" uid="uid://buqq36qfpc44w" path="res://messages/message.tscn" id="5_4dugh"]
 [ext_resource type="PackedScene" uid="uid://biabcd4oghelj" path="res://messages/typing_interface.tscn" id="5_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://cocbtwhd6x0bm" path="res://messages/reading_interface.tscn" id="6_4dugh"]
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("_starting_room", "_player", "_typing_interface", "_reading_interface")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("_starting_room", "_player", "_typing_interface", "_reading_interface", "_message_helper")]
 script = ExtResource("1_pjrb6")
 _starting_room = NodePath("Room")
 _player = NodePath("Player")
 _typing_interface = NodePath("CanvasLayer/NoteUI/TypingInterface")
 _reading_interface = NodePath("CanvasLayer/NoteUI/ReadingInterface")
 _room_scene = ExtResource("3_xwkvk")
-_message_scene = ExtResource("5_4dugh")
+_message_helper = NodePath("MessagePlacementHelper")
 _starting_seed_y = 46
+
+[node name="MessagePlacementHelper" type="Node3D" parent="."]
+script = ExtResource("4_67ri8")
+_message_scene = ExtResource("5_4dugh")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_grrlh")

@@ -8,7 +8,7 @@ enum State { EXPLORING, TYPING, PLACING_MESSAGE, READING }
 @export var _typing_interface: TypingInterface
 @export var _reading_interface: ReadingInterface
 @export var _room_scene: PackedScene
-@export var _message_scene: PackedScene
+@export var _message_helper: MessagePlacementHelper
 
 @export_category("Tweakables")
 @export_range(0, 99) var _starting_seed_x: int = 49
@@ -16,7 +16,6 @@ enum State { EXPLORING, TYPING, PLACING_MESSAGE, READING }
 
 var _player_coordinates: Vector2i
 var _current_room: Room
-var _placed_message: Message
 var _fsm_controller: FsmController
 
 
@@ -118,34 +117,16 @@ func _define_typing_state() -> FsmState:
 func _define_placing_message_state() -> FsmState:
 	var state := FsmState.new()
 
-	state.enter_callback = func():
-		_placed_message = _message_scene.instantiate() as Message
-		_current_room.add_child(_placed_message)
+	state.enter_callback = func(): _message_helper.begin_placing()
 
-	state.process_callback = func(_delta: float):
-		var space_state = get_world_3d().direct_space_state
-		var mouse_pos := get_viewport().get_mouse_position()
-		var origin := _player.camera.project_ray_origin(mouse_pos)
-		var end := origin + _player.camera.project_ray_normal(mouse_pos) * 1000.0
-		var query := PhysicsRayQueryParameters3D.create(origin, end)
-		query.collision_mask = 3
-		var result := space_state.intersect_ray(query)
-		if result:
-			if (result.collider as CollisionObject3D).collision_layer == 2:
-				_placed_message.visible = true
-				_placed_message.global_position = result.position
-				_placed_message.look_at(result.position - result.normal)
-			else:
-				_placed_message.visible = false
+	state.process_callback = func(_delta: float): _message_helper.update_placing(_player.camera)
 
 	state.input_callback = func(event: InputEvent):
 		if not event is InputEventMouseButton:
 			return
 
 		var mouse_event := event as InputEventMouseButton
-		if mouse_event.pressed and _placed_message.visible:
-			_placed_message.set_placed("fucky chucky")
-			_placed_message = null
+		if mouse_event.pressed && _message_helper.try_placing():
 			_fsm_controller.switch_state(State.EXPLORING)
 
 	return state
