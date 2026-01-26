@@ -1,6 +1,8 @@
 class_name TypingInterface
 extends Control
 
+signal finished
+
 enum State { CLOSED, TYPING, FINISHED }
 
 const _CHARS_BY_KEYCODE: Dictionary[Key, String] = {
@@ -62,8 +64,6 @@ func _ready():
 	_fsm_controller.register_state(State.TYPING, _define_typing_state())
 	_fsm_controller.register_state(State.FINISHED, _define_finished_state())
 
-	initialize()
-
 
 func _process(delta: float):
 	_fsm_controller.process_tick(delta)
@@ -117,11 +117,18 @@ func _do_error_anim():
 
 func _define_closed_state() -> FsmState:
 	var state := FsmState.new()
+
+	state.enter_callback = func():
+		_note_panel.visible = false
+
 	return state
 
 
 func _define_typing_state() -> FsmState:
 	var state := FsmState.new()
+
+	state.enter_callback = func():
+		_note_panel.visible = true
 
 	state.process_callback = func(delta: float):
 		if _chars_typed > 0:
@@ -170,6 +177,9 @@ func _define_finished_state() -> FsmState:
 		_submit_button.pressed, func(): _fsm_controller.switch_state(State.CLOSED)
 	)
 
-	state.exit_callback = func(): _submit_button.visible = false
+	state.exit_callback = func():
+		print("submitted")
+		_submit_button.visible = false
+		finished.emit()
 
 	return state

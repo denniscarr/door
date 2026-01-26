@@ -1,17 +1,29 @@
 extends Node3D
 
+enum State { EXPLORING, TYPING, READING }
+
+@export_category("Node References")
 @export var _starting_room: Room
-@export var _room_scene: PackedScene
 @export var _player: Player
+@export var _room_scene: PackedScene
+@export var _typing_interface: TypingInterface
+@export var _reading_interface: ReadingInterface
+
+@export_category("Tweakables")
 @export_range(0, 99) var _starting_seed_x: int = 49
 @export_range(0, 99) var _starting_seed_y: int = 49
 
 var _player_coordinates: Vector2i
 var _current_room: Room
+var _fsm_controller: FsmController
 
 
 func _ready():
-	_player.request_move.connect(_on_player_request_move)
+	_fsm_controller = FsmController.new()
+	_fsm_controller.register_state(State.EXPLORING, _define_exploring_state())
+	_fsm_controller.register_state(State.TYPING, _define_typing_state())
+	_fsm_controller.switch_state(State.EXPLORING)
+
 	_current_room = _starting_room
 	_starting_room.initialize(_get_seed())
 
@@ -60,9 +72,33 @@ func _do_enter_room_sequence(dir: Constants.CompassDir):
 	_current_room = next_room
 
 
-func _on_player_request_move(dir: Constants.CompassDir):
-	if not _current_room.does_wall_have_door(dir):
-		print("You can't move in that direction because there's no door.")
-		return
+func _define_exploring_state() -> FsmState:
+	var state := FsmState.new()
 
-	_do_enter_room_sequence(dir)
+	state.enter_callback = func():
+		_player.allow_input = true
+
+	state.add_signal_callback(
+		_player.request_interaction,
+		func(facing: Constants.CompassDir):
+			if _current_room.does_wall_have_door(facing):
+				_do_enter_room_sequence(facing)
+			else:
+				_fsm_controller.switch_state(State.TYPING)
+	)
+
+	return state
+
+
+func _define_typing_state() -> FsmState:
+	var state := FsmState.new()
+
+	state.enter_callback = func():
+		_player.allow_input = false
+		_typing_interface.initialize()
+
+	state.add_signal_callback(
+		_typing_interface.finished, func(): _fsm_controller.switch_state(State.EXPLORING)
+	)
+
+	return state

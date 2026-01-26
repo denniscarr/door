@@ -1,7 +1,7 @@
 class_name Player
 extends Node3D
 
-signal request_move(dir: Constants.CompassDir)
+signal request_interaction(dir: Constants.CompassDir)
 signal entered_room
 
 enum State {
@@ -53,7 +53,7 @@ func _define_idle_state() -> FsmState:
 		elif event.is_action_pressed("turn_right"):
 			_fsm_controller.switch_state(State.TURNING_RIGHT)
 		elif event.is_action_pressed("move_forward"):
-			request_move.emit(_current_compass_dir)
+			request_interaction.emit(_current_compass_dir)
 
 	return state
 

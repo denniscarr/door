@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://cocbtwhd6x0bm"]
+
+[ext_resource type="Script" uid="uid://dbwke63l4e6r2" path="res://messages/reading_interface.gd" id="1_0jwhk"]
+[ext_resource type="FontFile" uid="uid://mhaagu6d7akt" path="res://assets/fonts/SwirlyCanalope_PERSONAL_USE_ONLY.otf" id="2_bv1kh"]
+[ext_resource type="StyleBox" uid="uid://c3ir38qmespdx" path="res://messages/message_button.tres" id="3_nigxb"]
+[ext_resource type="StyleBox" uid="uid://b0skxvdyg0lwp" path="res://messages/message_button_pressed.tres" id="4_xnuqc"]
+[ext_resource type="StyleBox" uid="uid://vci85pnh8iex" path="res://messages/message_button_hover.tres" id="5_j77ej"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwkvk"]
+bg_color = Color(0.9974305, 0.95126265, 0.8297298, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3wy1v"]
+line_spacing = -4.0
+font = ExtResource("2_bv1kh")
+font_size = 48
+font_color = Color(0.02745098, 0.02745098, 0.02745098, 0.7019608)
+
+[node name="ReadingInterface" type="Control" node_paths=PackedStringArray("_note_panel", "_text_label", "_done_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0jwhk")
+_note_panel = NodePath("ReadingNote")
+_text_label = NodePath("ReadingNote/MarginContainer/VBoxContainer/TextLabel")
+_done_button = NodePath("ReadingNote/MarginContainer/VBoxContainer/DoneButton")
+
+[node name="ReadingNote" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -187.17542
+offset_right = 176.0
+offset_bottom = 186.82458
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(176, 187)
+theme_override_styles/panel = SubResource("StyleBoxFlat_xwkvk")
+
+[node name="MarginContainer" type="MarginContainer" parent="ReadingNote"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReadingNote/MarginContainer"]
+layout_mode = 2
+
+[node name="TextLabel" type="Label" parent="ReadingNote/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(312, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 0.7607843)
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("2_bv1kh")
+theme_override_font_sizes/font_size = 48
+text = "This is placeholder text. And i would like to make sure i am happy and stuff."
+label_settings = SubResource("LabelSettings_3wy1v")
+autowrap_mode = 3
+
+[node name="DoneButton" type="Button" parent="ReadingNote/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.31764707, 0.3019608, 0.26666668, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.31764707, 0.3019608, 0.26666668, 1)
+theme_override_styles/normal = ExtResource("3_nigxb")
+theme_override_styles/pressed = ExtResource("4_xnuqc")
+theme_override_styles/hover = ExtResource("5_j77ej")
+text = "Done"
