@@ -5,6 +5,7 @@ enum State { EXPLORING, TYPING, PLACING_MESSAGE, READING }
 @export_category("Node References")
 @export var _starting_room: Room
 @export var _player: Player
+@export var _movement_interface: MovementInterface
 @export var _typing_interface: TypingInterface
 @export var _reading_interface: ReadingInterface
 @export var _room_scene: PackedScene
@@ -30,7 +31,7 @@ func _ready():
 	_starting_room.initialize(_get_seed())
 	_message_helper.set_room(_get_seed())
 
-	_fsm_controller.switch_state(State.PLACING_MESSAGE)
+	_fsm_controller.switch_state(State.EXPLORING)
 
 
 func _process(delta: float):
@@ -80,6 +81,9 @@ func _do_enter_room_sequence(dir: Constants.CompassDir):
 
 	await _player.entered_room
 
+	_movement_interface.set_buttons_disabled(false)
+	_movement_interface.set_buttons_visible(true)
+
 	_player.allow_input = true
 	next_room.close_opening_after_entering(dir)
 	_message_helper.delete_messages_in_room(_current_room.rng_seed)
@@ -90,12 +94,21 @@ func _do_enter_room_sequence(dir: Constants.CompassDir):
 func _define_exploring_state() -> FsmState:
 	var state := FsmState.new()
 
-	state.enter_callback = func(): _player.allow_input = true
+	state.enter_callback = func():
+		_player.allow_input = true
+		_movement_interface.set_buttons_visible(true)
+		_movement_interface.set_buttons_disabled(false)
+
+	state.exit_callback = func():
+		_movement_interface.set_buttons_visible(false)
+		_movement_interface.set_buttons_disabled(true)
 
 	state.add_signal_callback(
 		_player.request_interaction,
 		func(facing: Constants.CompassDir):
 			if _current_room.does_wall_have_door(facing):
+				_movement_interface.set_buttons_disabled(true)
+				_movement_interface.set_buttons_visible(false)
 				_do_enter_room_sequence(facing)
 			else:
 				_fsm_controller.switch_state(State.TYPING)
@@ -106,6 +119,28 @@ func _define_exploring_state() -> FsmState:
 		func(message_text: String):
 			_reading_interface.initialize(message_text)
 			_fsm_controller.switch_state(State.READING)
+	)
+
+	state.add_signal_callback(
+		_movement_interface.request_turn_left,
+		func():
+			_movement_interface.set_buttons_disabled(true)
+			_player.turn_left()
+	)
+
+	state.add_signal_callback(
+		_movement_interface.request_turn_right,
+		func():
+			_movement_interface.set_buttons_disabled(true)
+			_player.turn_right()
+	)
+
+	state.add_signal_callback(
+		_movement_interface.request_post_message, func(): _fsm_controller.switch_state(State.TYPING)
+	)
+
+	state.add_signal_callback(
+		_player.finished_turning, func(): _movement_interface.set_buttons_disabled(false)
 	)
 
 	return state
@@ -131,7 +166,10 @@ func _define_typing_state() -> FsmState:
 		_typing_interface.initialize()
 
 	state.add_signal_callback(
-		_typing_interface.finished, func(): _fsm_controller.switch_state(State.EXPLORING)
+		_typing_interface.finished,
+		func(typed_text: String):
+			_message_helper.begin_placing(typed_text)
+			_fsm_controller.switch_state(State.PLACING_MESSAGE)
 	)
 
 	return state
@@ -139,8 +177,6 @@ func _define_typing_state() -> FsmState:
 
 func _define_placing_message_state() -> FsmState:
 	var state := FsmState.new()
-
-	state.enter_callback = func(): _message_helper.begin_placing()
 
 	state.process_callback = func(_delta: float): _message_helper.update_placing(_player.camera)
 

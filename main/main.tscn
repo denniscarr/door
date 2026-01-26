@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bj8vc7neoh76n"]
+[gd_scene load_steps=10 format=3 uid="uid://bj8vc7neoh76n"]
 
 [ext_resource type="PackedScene" uid="uid://dfiw4rmih8jur" path="res://player/player.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://ba4jd4ynh4bvu" path="res://main/main.gd" id="1_pjrb6"]
@@ -8,11 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://buqq36qfpc44w" path="res://messages/message.tscn" id="5_4dugh"]
 [ext_resource type="PackedScene" uid="uid://biabcd4oghelj" path="res://messages/typing_interface.tscn" id="5_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://cocbtwhd6x0bm" path="res://messages/reading_interface.tscn" id="6_4dugh"]
+[ext_resource type="PackedScene" uid="uid://consxsjy5ygcl" path="res://ui/movement_interface.tscn" id="7_grrlh"]
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("_starting_room", "_player", "_typing_interface", "_reading_interface", "_message_helper")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("_starting_room", "_player", "_movement_interface", "_typing_interface", "_reading_interface", "_message_helper")]
 script = ExtResource("1_pjrb6")
 _starting_room = NodePath("Room")
 _player = NodePath("Player")
+_movement_interface = NodePath("CanvasLayer/MovementInterface")
 _typing_interface = NodePath("CanvasLayer/NoteUI/TypingInterface")
 _reading_interface = NodePath("CanvasLayer/NoteUI/ReadingInterface")
 _room_scene = ExtResource("3_xwkvk")
@@ -32,6 +34,8 @@ environment = ExtResource("3_grrlh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="MovementInterface" parent="CanvasLayer" instance=ExtResource("7_grrlh")]
+
 [node name="NoteUI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
@@ -43,7 +47,7 @@ mouse_filter = 2
 
 [node name="TypingInterface" parent="CanvasLayer/NoteUI" instance=ExtResource("5_kfbq2")]
 layout_mode = 1
-mouse_filter = 1
+mouse_filter = 2
 
 [node name="ReadingInterface" parent="CanvasLayer/NoteUI" instance=ExtResource("6_4dugh")]
 layout_mode = 1

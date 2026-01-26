@@ -97,7 +97,7 @@ theme_override_colors/font_hover_color = Color(0.31764707, 0.3019608, 0.26666668
 theme_override_styles/normal = ExtResource("3_g0hgn")
 theme_override_styles/pressed = ExtResource("4_c6rkk")
 theme_override_styles/hover = ExtResource("5_0ctdp")
-text = "Submit"
+text = "Post Message"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TypingNote/MarginContainer/VBoxContainer"]
 layout_mode = 2

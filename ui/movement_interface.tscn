@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://consxsjy5ygcl"]
+
+[ext_resource type="Script" uid="uid://c7173hkdaq2dq" path="res://ui/movement_interface.gd" id="1_lw1rk"]
+[ext_resource type="FontFile" uid="uid://mhaagu6d7akt" path="res://assets/fonts/SwirlyCanalope_PERSONAL_USE_ONLY.otf" id="2_gj01w"]
+
+[node name="MovementInterface" type="Control" node_paths=PackedStringArray("_turn_left_button", "_turn_right_button", "_post_message_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_lw1rk")
+_turn_left_button = NodePath("MarginContainer/HBoxContainer/TurnLeftButton")
+_turn_right_button = NodePath("MarginContainer/HBoxContainer/TurnRightButton")
+_post_message_button = NodePath("MarginContainer/MessageButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TurnLeftButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "⮜"
+
+[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="TurnRightButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "⮞"
+
+[node name="MessageButton" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_gj01w")
+theme_override_font_sizes/font_size = 36
+text = "Leave Note"

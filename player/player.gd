@@ -3,6 +3,7 @@ extends Node3D
 
 signal request_interaction(dir: Constants.CompassDir)
 signal entered_room
+signal finished_turning
 
 enum State {
 	IDLE,
@@ -39,6 +40,20 @@ func _ready():
 
 func _input(event: InputEvent):
 	_fsm_controller.input(event)
+
+
+func turn_left():
+	if _fsm_controller.current_state_key != State.IDLE:
+		return
+
+	_fsm_controller.switch_state(State.TURNING_LEFT)
+
+
+func turn_right():
+	if _fsm_controller.current_state_key != State.IDLE:
+		return
+
+	_fsm_controller.switch_state(State.TURNING_RIGHT)
 
 
 func move_to_next_room():
@@ -95,6 +110,8 @@ func _define_turning_left_state() -> FsmState:
 		var tween := _create_turning_tween(rotation_degrees.y + 90.0)
 		tween.tween_callback(_fsm_controller.switch_state.bind(State.IDLE))
 
+	state.exit_callback = func(): finished_turning.emit()
+
 	return state
 
 
@@ -114,6 +131,8 @@ func _define_turning_right_state() -> FsmState:
 
 		var tween := _create_turning_tween(rotation_degrees.y - 90.0)
 		tween.tween_callback(_fsm_controller.switch_state.bind(State.IDLE))
+
+	state.exit_callback = func(): finished_turning.emit()
 
 	return state
 

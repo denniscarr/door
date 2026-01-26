@@ -1,7 +1,7 @@
 class_name TypingInterface
 extends Control
 
-signal finished
+signal finished(typed_input: String)
 
 enum State { CLOSED, TYPING, FINISHED }
 
@@ -178,8 +178,7 @@ func _define_finished_state() -> FsmState:
 	)
 
 	state.exit_callback = func():
-		print("submitted")
 		_submit_button.visible = false
-		finished.emit()
+		finished.emit(_input_label.text)
 
 	return state

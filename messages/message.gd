@@ -7,6 +7,10 @@ signal opened(message_text: String)
 @export var _body: StaticBody3D
 @export var _shape: CollisionShape3D
 
+var message_text: String:
+	get:
+		return _message_text
+
 var _is_highlighted: bool = false
 var _message_text: String = ""
 
@@ -23,8 +27,11 @@ func _input(event: InputEvent):
 		opened.emit(_message_text)
 
 
-func set_placed(message_text: String):
+func set_text(message_text: String):
 	_message_text = message_text
+
+
+func set_placed():
 	_shape.disabled = false
 	_body.mouse_entered.connect(_on_body_mouse_entered)
 	_body.mouse_exited.connect(_on_body_mouse_exited)

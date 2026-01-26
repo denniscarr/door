@@ -18,10 +18,11 @@ func apply_texture(tex: Texture2D):
 		if child is MeshInstance3D:
 			child.set_surface_override_material(0, mat)
 
+
 func add_door():
 	for tile: Node3D in _door_tiles:
 		tile.visible = false
-	_door.visible = true
+	_door.set_active(true)
 	_has_door = true
 
 
@@ -34,7 +35,7 @@ func do_open_door():
 
 ## Use this to force an opening during the door transition
 func force_opening():
-	_door.visible = false
+	_door.set_active(false)
 	for tile: Node3D in _door_tiles:
 		tile.visible = false
 
@@ -43,6 +44,6 @@ func close_opening():
 	if _has_door:
 		add_door()
 	else:
-		_door.visible = false
+		_door.set_active(false)
 		for tile: Node3D in _door_tiles:
 			tile.visible = true

@@ -22,9 +22,10 @@ albedo_texture = ExtResource("3_08xnr")
 [sub_resource type="BoxShape3D" id="BoxShape3D_plcny"]
 size = Vector3(1.4619141, 2.2572632, 0.20507813)
 
-[node name="Door" type="Node3D" node_paths=PackedStringArray("_hinge")]
+[node name="Door" type="Node3D" node_paths=PackedStringArray("_hinge", "_shape")]
 script = ExtResource("1_plcny")
 _hinge = NodePath("Hinge")
+_shape = NodePath("StaticBody3D/CollisionShape3D")
 
 [node name="Head" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 2.05, 0)
@@ -61,3 +62,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1xxlg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1181335, 0.05859375)
 shape = SubResource("BoxShape3D_plcny")
+disabled = true
