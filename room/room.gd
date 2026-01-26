@@ -1,6 +1,8 @@
 class_name Room
 extends Node3D
 
+signal request_door_open(door_dir: Constants.CompassDir)
+
 @export var _spot_light: SpotLight3D
 
 @export_category("Walls 'n Shit")

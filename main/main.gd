@@ -1,6 +1,6 @@
 extends Node3D
 
-enum State { EXPLORING, TYPING, PLACING_MESSAGE, READING }
+enum State { EXPLORING, CHANGING_ROOMS, TYPING, PLACING_MESSAGE, READING }
 
 @export_category("Node References")
 @export var _starting_room: Room
@@ -21,16 +21,16 @@ var _fsm_controller: FsmController
 
 
 func _ready():
+	_starting_room.initialize(_get_seed())
+	_message_helper.set_room(_get_seed())
+	_current_room = _starting_room
+
 	_fsm_controller = FsmController.new()
 	_fsm_controller.register_state(State.EXPLORING, _define_exploring_state())
+	_fsm_controller.register_state(State.CHANGING_ROOMS, _define_changing_rooms_state())
 	_fsm_controller.register_state(State.READING, _define_reading_state())
 	_fsm_controller.register_state(State.TYPING, _define_typing_state())
 	_fsm_controller.register_state(State.PLACING_MESSAGE, _define_placing_message_state())
-
-	_current_room = _starting_room
-	_starting_room.initialize(_get_seed())
-	_message_helper.set_room(_get_seed())
-
 	_fsm_controller.switch_state(State.EXPLORING)
 
 
@@ -58,8 +58,6 @@ func _create_room(coordinates: Vector2) -> Room:
 
 
 func _do_enter_room_sequence(dir: Constants.CompassDir):
-	_player.allow_input = false
-
 	match dir:
 		Constants.CompassDir.NORTH:
 			_player_coordinates.y -= 1
@@ -81,15 +79,12 @@ func _do_enter_room_sequence(dir: Constants.CompassDir):
 
 	await _player.entered_room
 
-	_movement_interface.set_buttons_disabled(false)
-	_movement_interface.set_buttons_visible(true)
-	CursorManager.set_cursor_active(true)
-
-	_player.allow_input = true
 	next_room.close_opening_after_entering(dir)
 	_message_helper.delete_messages_in_room(_current_room.rng_seed)
 	_current_room.queue_free()
 	_current_room = next_room
+
+	_fsm_controller.switch_state(State.EXPLORING)
 
 
 func _define_exploring_state() -> FsmState:
@@ -107,16 +102,10 @@ func _define_exploring_state() -> FsmState:
 		_movement_interface.set_buttons_disabled(true)
 
 	state.add_signal_callback(
-		_player.request_interaction,
-		func(facing: Constants.CompassDir):
-			if _current_room.does_wall_have_door(facing):
-				_movement_interface.set_buttons_disabled(true)
-				_movement_interface.set_buttons_visible(false)
-				CursorManager.set_cursor_active(false)
-				CursorManager.enable_env_highlighting(true)
-				_do_enter_room_sequence(facing)
-			else:
-				_fsm_controller.switch_state(State.TYPING)
+		GlobalSignals.request_door_open,
+		func():
+			if _current_room.does_wall_have_door(_player.facing):
+				_fsm_controller.switch_state(State.CHANGING_ROOMS)
 	)
 
 	state.add_signal_callback(
@@ -155,6 +144,20 @@ func _define_exploring_state() -> FsmState:
 	state.add_signal_callback(
 		_movement_interface.request_post_message, func(): _fsm_controller.switch_state(State.TYPING)
 	)
+
+	return state
+
+
+func _define_changing_rooms_state() -> FsmState:
+	var state := FsmState.new()
+
+	state.enter_callback = func():
+		_player.allow_input = false
+		_movement_interface.set_buttons_disabled(true)
+		_movement_interface.set_buttons_visible(false)
+		CursorManager.set_cursor_active(false)
+		CursorManager.enable_env_highlighting(false)
+		_do_enter_room_sequence(_player.facing)
 
 	return state
 

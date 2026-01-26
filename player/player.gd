@@ -1,7 +1,6 @@
 class_name Player
 extends Node3D
 
-signal request_interaction(dir: Constants.CompassDir)
 signal entered_room
 signal finished_turning
 
@@ -24,6 +23,10 @@ var ray_cast: RayCast3D:
 		return _ray_cast
 
 var allow_input: bool = true
+
+var facing: Constants.CompassDir:
+	get:
+		return _current_compass_dir
 
 var _current_compass_dir: Constants.CompassDir = Constants.CompassDir.NORTH
 var _fsm_controller: FsmController
@@ -88,7 +91,7 @@ func _define_idle_state() -> FsmState:
 		elif event.is_action_pressed("turn_right"):
 			_fsm_controller.switch_state(State.TURNING_RIGHT)
 		elif event.is_action_pressed("move_forward"):
-			request_interaction.emit(_current_compass_dir)
+			GlobalSignals.request_door_open.emit()
 
 	return state
 
