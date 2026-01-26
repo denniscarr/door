@@ -28,7 +28,7 @@ func initialize(p_rng_seed: int):
 	print("Generating room with seed: %s" % rng_seed)
 
 	# Randomize doors
-	var num_doors := randi_range(1, 4)
+	var num_doors := randi_range(2, 4)
 	print("Number of doors: %s" % num_doors)
 
 	var possible_dirs := [
