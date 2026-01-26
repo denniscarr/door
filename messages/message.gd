@@ -11,29 +11,11 @@ var message_text: String:
 	get:
 		return _message_text
 
-var _is_highlighted: bool = false
 var _message_text: String = ""
 
 
-func _process(_delta: float):
-	if _is_highlighted:
-		if not CursorManager.env_highlighting:
-			_unhighlight()
-			return
-		if not _mouse_sensor.is_mouse_over:
-			_unhighlight()
-			return
-
-	if not _is_highlighted:
-		if not CursorManager.env_highlighting:
-			return
-
-		if _mouse_sensor.is_mouse_over:
-			_highlight()
-
-
 func _input(event: InputEvent):
-	if not _is_highlighted:
+	if not CursorManager.cursor_active:
 		return
 
 	if not event is InputEventMouseButton:
@@ -50,24 +32,24 @@ func set_text(p_message_text: String):
 
 func set_placed():
 	_shape.disabled = false
+	_mouse_sensor.highlight.connect(_on_mouse_sensor_highlight)
+	_mouse_sensor.unhighlight.connect(_on_mouse_sensor_unhighlight)
 
 
-func _highlight():
+func _on_mouse_sensor_highlight():
 	var mat := _mesh_instance.get_surface_override_material(0) as StandardMaterial3D
 	mat.emission_energy_multiplier = 0.4
-	_is_highlighted = true
 
 
-func _unhighlight():
+func _on_mouse_sensor_unhighlight():
 	var mat := _mesh_instance.get_surface_override_material(0) as StandardMaterial3D
 	mat.emission_energy_multiplier = 0.2
-	_is_highlighted = false
 
 
 func _on_body_mouse_entered():
 	if CursorManager.env_highlighting:
-		_highlight()
+		_on_mouse_sensor_highlight()
 
 
 func _on_body_mouse_exited():
-	_unhighlight()
+	_on_mouse_sensor_unhighlight()
