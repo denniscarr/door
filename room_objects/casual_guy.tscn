@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://0o3yrbgkadir"]
+
+[ext_resource type="ArrayMesh" uid="uid://dgf8l7oa86pdb" path="res://assets/models/casual_guy/casual.obj" id="1_474hx"]
+
+[node name="CasualGuy" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_474hx")
