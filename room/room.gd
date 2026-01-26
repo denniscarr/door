@@ -15,9 +15,16 @@ extends Node3D
 @export var _asset_library: RoomAssetLibrary
 @export var _room_object_holders: Array[RoomObjectHolder]
 
+var rng_seed: int:
+	get:
+		return _rng_seed
 
-func initialize(rng_seed: int):
-	seed(rng_seed)
+var _rng_seed: int
+
+
+func initialize(p_rng_seed: int):
+	_rng_seed = p_rng_seed
+	seed(_rng_seed)
 	print("Generating room with seed: %s" % rng_seed)
 
 	# Randomize doors

@@ -14,6 +14,26 @@ var _extant_messages_by_room_seed: Dictionary[int, Array]
 func set_room(room_seed: int):
 	_room_seed = room_seed
 
+	# Restore saved messages
+	if _message_infos_by_room_seed.has(room_seed):
+		for info: PlacedMessageInfo in _message_infos_by_room_seed[room_seed]:
+			var message := _message_scene.instantiate() as Message
+			add_child(message)
+			message.global_position = info.position
+			message.global_rotation = info.rotation
+			message.set_placed(info.text)
+			message.opened.connect(_on_message_opened)
+
+
+func delete_messages_in_room(room_seed: int):
+	if not _extant_messages_by_room_seed.has(room_seed):
+		return
+
+	for message: Message in _extant_messages_by_room_seed[room_seed]:
+		message.queue_free()
+
+	_extant_messages_by_room_seed.erase(room_seed)
+
 
 func begin_placing():
 	_current_message = _message_scene.instantiate() as Message
@@ -46,12 +66,7 @@ func try_placing() -> bool:
 
 	# Place the message
 	_current_message.set_placed("fucky chucky")
-	_current_message.opened.connect(_on_message_opened)
-
-	# Store a reference to this message
-	if not _extant_messages_by_room_seed.has(_room_seed):
-		_extant_messages_by_room_seed[_room_seed] = []
-	_extant_messages_by_room_seed[_room_seed].push_back(_current_message)
+	_put_message_in_room(_current_message)
 
 	# Store message info for next time we enter this room
 	var message_info := PlacedMessageInfo.new()
@@ -64,6 +79,15 @@ func try_placing() -> bool:
 
 	_current_message = null
 	return true
+
+
+func _put_message_in_room(message: Message):
+	message.opened.connect(_on_message_opened)
+
+	# Store a reference to this message
+	if not _extant_messages_by_room_seed.has(_room_seed):
+		_extant_messages_by_room_seed[_room_seed] = []
+	_extant_messages_by_room_seed[_room_seed].push_back(message)
 
 
 func _on_message_opened(message_text: String):

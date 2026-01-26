@@ -82,6 +82,7 @@ func _do_enter_room_sequence(dir: Constants.CompassDir):
 
 	_player.allow_input = true
 	next_room.close_opening_after_entering(dir)
+	_message_helper.delete_messages_in_room(_current_room.rng_seed)
 	_current_room.queue_free()
 	_current_room = next_room
 
