@@ -83,6 +83,7 @@ func _do_enter_room_sequence(dir: Constants.CompassDir):
 
 	_movement_interface.set_buttons_disabled(false)
 	_movement_interface.set_buttons_visible(true)
+	CursorManager.set_cursor_active(true)
 
 	_player.allow_input = true
 	next_room.close_opening_after_entering(dir)
@@ -98,6 +99,8 @@ func _define_exploring_state() -> FsmState:
 		_player.allow_input = true
 		_movement_interface.set_buttons_visible(true)
 		_movement_interface.set_buttons_disabled(false)
+		CursorManager.set_cursor_active(true)
+		CursorManager.enable_env_highlighting(true)
 
 	state.exit_callback = func():
 		_movement_interface.set_buttons_visible(false)
@@ -109,6 +112,8 @@ func _define_exploring_state() -> FsmState:
 			if _current_room.does_wall_have_door(facing):
 				_movement_interface.set_buttons_disabled(true)
 				_movement_interface.set_buttons_visible(false)
+				CursorManager.set_cursor_active(false)
+				CursorManager.enable_env_highlighting(true)
 				_do_enter_room_sequence(facing)
 			else:
 				_fsm_controller.switch_state(State.TYPING)
@@ -149,7 +154,9 @@ func _define_exploring_state() -> FsmState:
 func _define_reading_state() -> FsmState:
 	var state := FsmState.new()
 
-	state.enter_callback = func(): _player.allow_input = false
+	state.enter_callback = func():
+		_player.allow_input = false
+		CursorManager.enable_env_highlighting(false)
 
 	state.add_signal_callback(
 		_reading_interface.finished, func(): _fsm_controller.switch_state(State.EXPLORING)
@@ -163,6 +170,7 @@ func _define_typing_state() -> FsmState:
 
 	state.enter_callback = func():
 		_player.allow_input = false
+		CursorManager.enable_env_highlighting(false)
 		_typing_interface.initialize()
 
 	state.add_signal_callback(
@@ -177,6 +185,8 @@ func _define_typing_state() -> FsmState:
 
 func _define_placing_message_state() -> FsmState:
 	var state := FsmState.new()
+
+	state.enter_callback = func(): CursorManager.enable_env_highlighting(false)
 
 	state.process_callback = func(_delta: float): _message_helper.update_placing(_player.camera)
 

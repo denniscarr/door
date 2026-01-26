@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://consxsjy5ygcl"]
+[gd_scene load_steps=2 format=3 uid="uid://consxsjy5ygcl"]
 
 [ext_resource type="Script" uid="uid://c7173hkdaq2dq" path="res://ui/movement_interface.gd" id="1_lw1rk"]
-[ext_resource type="FontFile" uid="uid://mhaagu6d7akt" path="res://assets/fonts/SwirlyCanalope_PERSONAL_USE_ONLY.otf" id="2_gj01w"]
 
 [node name="MovementInterface" type="Control" node_paths=PackedStringArray("_turn_left_button", "_turn_right_button", "_post_message_button")]
 layout_mode = 3
@@ -55,6 +54,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 focus_mode = 0
-theme_override_fonts/font = ExtResource("2_gj01w")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 24
 text = "Leave Note"
