@@ -56,6 +56,7 @@ var _time_remaining: float
 var _chars_typed: int
 var _error_tween: Tween
 var _fsm_controller: FsmController
+var _typed_text: String
 
 
 func _ready():
@@ -74,7 +75,8 @@ func _input(event: InputEvent):
 
 
 func initialize():
-	_input_label.text = ""
+	_typed_text = ""
+	_input_label.text = "|"
 
 	_time_remaining = _max_secs
 	_refresh_timer_label()
@@ -90,7 +92,8 @@ func _add_typed_char(typed_char: String):
 	if is_capital:
 		typed_char = typed_char.to_upper()
 
-	_input_label.text += typed_char
+	_typed_text += typed_char
+	_input_label.text = _typed_text + "|"
 	_chars_typed += 1
 	_chars_typed = mini(_chars_typed, _max_chars)
 	_refresh_char_count_label()
@@ -118,8 +121,7 @@ func _do_error_anim():
 func _define_closed_state() -> FsmState:
 	var state := FsmState.new()
 
-	state.enter_callback = func():
-		_note_panel.visible = false
+	state.enter_callback = func(): _note_panel.visible = false
 
 	return state
 
@@ -127,8 +129,7 @@ func _define_closed_state() -> FsmState:
 func _define_typing_state() -> FsmState:
 	var state := FsmState.new()
 
-	state.enter_callback = func():
-		_note_panel.visible = true
+	state.enter_callback = func(): _note_panel.visible = true
 
 	state.process_callback = func(delta: float):
 		if _chars_typed > 0:
@@ -152,7 +153,6 @@ func _define_typing_state() -> FsmState:
 		elif key_event.keycode == KEY_BACKSPACE || key_event.keycode == KEY_DELETE:
 			_do_error_anim()
 
-		print(_chars_typed)
 		if _chars_typed >= 1 and _done_button.visible == false:
 			_done_button.visible = true
 
@@ -160,7 +160,10 @@ func _define_typing_state() -> FsmState:
 			_fsm_controller.switch_state(State.FINISHED)
 
 	state.add_signal_callback(
-		_done_button.pressed, func(): _fsm_controller.switch_state(State.FINISHED)
+		_done_button.pressed,
+		func():
+			finished.emit(_typed_text)
+			_fsm_controller.switch_state(State.CLOSED)
 	)
 
 	state.exit_callback = func(): _done_button.visible = false
@@ -179,6 +182,6 @@ func _define_finished_state() -> FsmState:
 
 	state.exit_callback = func():
 		_submit_button.visible = false
-		finished.emit(_input_label.text)
+		finished.emit(_typed_text)
 
 	return state

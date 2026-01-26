@@ -11,7 +11,12 @@ var message_text: String:
 	get:
 		return _message_text
 
+var non_placable: bool:
+	get:
+		return _non_placable
+
 var _message_text: String = ""
+var _non_placable: bool = false
 
 
 func _input(event: InputEvent):
@@ -36,12 +41,27 @@ func set_placed():
 	_mouse_sensor.unhighlight.connect(_on_mouse_sensor_unhighlight)
 
 
+func set_non_placable(p_non_placable: bool):
+	if _non_placable == p_non_placable:
+		return
+
+	_non_placable = p_non_placable
+
+	var mat := _mesh_instance.get_surface_override_material(0) as StandardMaterial3D
+	if non_placable:
+		mat.albedo_color.a = 0.25
+	else:
+		mat.albedo_color.a = 1.0
+
+
 func _on_mouse_sensor_highlight():
+	CursorManager.is_highlighting_message = true
 	var mat := _mesh_instance.get_surface_override_material(0) as StandardMaterial3D
 	mat.emission_energy_multiplier = 0.4
 
 
 func _on_mouse_sensor_unhighlight():
+	CursorManager.is_highlighting_message = false
 	var mat := _mesh_instance.get_surface_override_material(0) as StandardMaterial3D
 	mat.emission_energy_multiplier = 0.2
 

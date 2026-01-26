@@ -41,6 +41,7 @@ func do_open():
 
 
 func _on_mouse_sensor_highlight():
+	CursorManager.is_highlighting_door = true
 	for mesh: MeshInstance3D in _highlight_meshes:
 		if mesh.get_surface_override_material_count() < 1:
 			continue
@@ -51,6 +52,7 @@ func _on_mouse_sensor_highlight():
 
 
 func _on_mouse_sensor_unhighlight():
+	CursorManager.is_highlighting_door = false
 	for mesh: MeshInstance3D in _highlight_meshes:
 		if mesh.get_surface_override_material_count() < 1:
 			continue

@@ -51,19 +51,19 @@ func update_placing(cam: Camera3D):
 	query.collision_mask = 3
 	var result := space_state.intersect_ray(query)
 	if result:
+		_current_message.global_position = result.position
+		_current_message.look_at(result.position - result.normal)
 		if (result.collider as CollisionObject3D).collision_layer == 2:
-			_current_message.visible = true
-			_current_message.global_position = result.position
-			_current_message.look_at(result.position - result.normal)
+			_current_message.set_non_placable(false)
 		else:
-			_current_message.visible = false
+			_current_message.set_non_placable(true)
 
 
 func try_placing() -> bool:
 	if _current_message == null:
 		return false
 
-	if not _current_message.visible:
+	if _current_message.non_placable:
 		return false
 
 	# Place the message

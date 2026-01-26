@@ -31,10 +31,12 @@ theme_override_constants/margin_bottom = 20
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="TurnLeftButton" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 40
 text = "⮜"
 
@@ -46,6 +48,7 @@ mouse_filter = 2
 [node name="TurnRightButton" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 40
 text = "⮞"
 
@@ -54,5 +57,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 24
 text = "Leave Note"

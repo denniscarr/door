@@ -7,6 +7,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xonbe"]
 resource_local_to_scene = true
+transparency = 1
 albedo_color = Color(0.859, 0.753, 0.482, 1)
 emission_enabled = true
 emission = Color(0.85882354, 0.7529412, 0.48235294, 1)
