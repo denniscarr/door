@@ -11,6 +11,17 @@ enum State {
 	MOVING_FORWARD,
 }
 
+@export var _ray_cast: RayCast3D
+@export var _camera: Camera3D
+
+var camera: Camera3D:
+	get:
+		return _camera
+
+var ray_cast: RayCast3D:
+	get:
+		return _ray_cast
+
 var allow_input: bool = true
 
 var _current_compass_dir: Constants.CompassDir = Constants.CompassDir.NORTH
@@ -32,6 +43,15 @@ func _input(event: InputEvent):
 
 func move_to_next_room():
 	_fsm_controller.switch_state(State.MOVING_FORWARD)
+
+
+func cast_to_mouse_pos():
+	var mouse_pos := get_viewport().get_mouse_position()
+	_ray_cast.global_position = _camera.project_ray_origin(mouse_pos)
+	_ray_cast.target_position = (
+		_ray_cast.global_position + _camera.project_ray_normal(mouse_pos) * 1000.0
+	)
+	_ray_cast.force_raycast_update()
 
 
 func _create_turning_tween(target_angle: float) -> Tween:
@@ -108,7 +128,6 @@ func _define_moving_forward_state() -> FsmState:
 		move_tween.tween_property(self, "global_position", target_pos, 5.0)
 		move_tween.tween_callback(_fsm_controller.switch_state.bind(State.IDLE))
 
-	state.exit_callback = func():
-		entered_room.emit()
+	state.exit_callback = func(): entered_room.emit()
 
 	return state

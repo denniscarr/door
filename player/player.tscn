@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://5akom6v1oecj" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Environment" uid="uid://dqwtos2marag3" path="res://global/global_environment.tres" id="2_rkbax"]
 
-[node name="Player" type="Node3D"]
+[node name="Player" type="Node3D" node_paths=PackedStringArray("_ray_cast", "_camera")]
 script = ExtResource("1_oul6g")
+_ray_cast = NodePath("RayCast3D")
+_camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -16,3 +18,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 visible = false
 light_energy = 0.1
 spot_angle = 55.0
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+collision_mask = 2
+hit_back_faces = false

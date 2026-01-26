@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl0tg3wgdtic7"]
+[gd_scene load_steps=5 format=3 uid="uid://dl0tg3wgdtic7"]
 
 [ext_resource type="Script" uid="uid://ce60ky2aodicb" path="res://door/door.gd" id="1_plcny"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ah6et"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ah6et"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_plcny"]
+size = Vector3(1.4619141, 2.2572632, 0.20507813)
 
 [node name="Door" type="Node3D" node_paths=PackedStringArray("_hinge")]
 script = ExtResource("1_plcny")
@@ -34,3 +37,9 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.099999964, 0, 0, 0, -5.5918963e-09, -0.1, 0, 0.12792762, -4.371137e-09, 0.84874314, 0.8272992, -0.041472435)
 mesh = SubResource("CylinderMesh_ah6et")
 skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1181335, 0.05859375)
+shape = SubResource("BoxShape3D_plcny")
