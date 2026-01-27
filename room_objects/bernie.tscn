@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv4ikojrx0oj0"]
+
+[ext_resource type="PackedScene" uid="uid://iubp12ibcldm" path="res://assets/models/bernie/BSanders_r03.FBX" id="1_8od45"]
+[ext_resource type="Material" uid="uid://b2qgnecjk3ef4" path="res://assets/models/bernie/bernie.tres" id="2_55o6y"]
+
+[node name="Bernie" instance=ExtResource("1_8od45")]
+
+[node name="hsanders_head" parent="rig_CharRoot/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_55o6y")
+
+[node name="hsanders_hair" parent="rig_CharRoot/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("2_55o6y")
+
+[node name="hsanders_boddy" parent="rig_CharRoot/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("2_55o6y")
