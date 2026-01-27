@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm87joh7333g4"]
+
+[ext_resource type="PackedScene" uid="uid://bfjsi8djdtros" path="res://assets/models/twilight_char/Twilight_Character.FBX" id="1_brce2"]
+
+[node name="TwilightCharacter" instance=ExtResource("1_brce2")]
