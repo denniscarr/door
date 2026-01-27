@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciqhq2vm8ugqi"]
+
+[ext_resource type="PackedScene" uid="uid://1drep7d8otjx" path="res://assets/models/couple/lpMale_casual_K.fbx" id="1_ym080"]
+
+[node name="CasualMale" instance=ExtResource("1_ym080")]
