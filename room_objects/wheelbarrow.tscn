@@ -1,0 +1,62 @@
+[gd_scene load_steps=17 format=3 uid="uid://j48fo8u5hvsl"]
+
+[ext_resource type="PackedScene" uid="uid://dqleq1vl4yd3y" path="res://assets/models/Wheelbarrow/Wheelbarrow_fbx.FBX" id="1_2sdj0"]
+[ext_resource type="Texture2D" uid="uid://bo2eowc56sabh" path="res://assets/models/Wheelbarrow/Textures/grw_01 - Default_Diffuse.png" id="2_giwhx"]
+[ext_resource type="Texture2D" uid="uid://cr5p4nnuns2rq" path="res://assets/models/Wheelbarrow/Textures/grw_03 - Default_Diffuse.png" id="2_jowhd"]
+[ext_resource type="Texture2D" uid="uid://efxyu36ad8fa" path="res://assets/models/Wheelbarrow/Textures/grw_03 - Default_Height.png" id="3_g2boe"]
+[ext_resource type="Texture2D" uid="uid://gxhvc7b25n32" path="res://assets/models/Wheelbarrow/Textures/grw_01 - Default_Height.png" id="3_kmb5m"]
+[ext_resource type="Texture2D" uid="uid://siyoxnv5awfm" path="res://assets/models/Wheelbarrow/Textures/grw_03 - Default_Specular.png" id="4_7nihc"]
+[ext_resource type="Texture2D" uid="uid://vrot8ilit13b" path="res://assets/models/Wheelbarrow/Textures/grw_01 - Default_Glossiness.png" id="4_hyxc0"]
+[ext_resource type="Texture2D" uid="uid://d3eax1a5jvekk" path="res://assets/models/Wheelbarrow/Textures/grw_03 - Default_Normal.png" id="5_g2boe"]
+[ext_resource type="Texture2D" uid="uid://mbng7v4jfynq" path="res://assets/models/Wheelbarrow/Textures/grw_01 - Default_Normal.png" id="5_svcmu"]
+[ext_resource type="Texture2D" uid="uid://d26frqeciyflh" path="res://assets/models/Wheelbarrow/Textures/grw_02 - Default_Diffuse.png" id="6_jowhd"]
+[ext_resource type="Texture2D" uid="uid://c03xwyiudx5t2" path="res://assets/models/Wheelbarrow/Textures/grw_02 - Default_Height.png" id="7_g2boe"]
+[ext_resource type="Texture2D" uid="uid://ctr5v81ng2u3u" path="res://assets/models/Wheelbarrow/Textures/grw_02 - Default_Normal.png" id="8_7nihc"]
+[ext_resource type="Texture2D" uid="uid://bjyloenmmkxpb" path="res://assets/models/Wheelbarrow/Textures/grw_02 - Default_Glossiness.png" id="8_kmb5m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8y52"]
+albedo_texture = ExtResource("2_jowhd")
+metallic = 1.0
+metallic_texture = ExtResource("4_7nihc")
+normal_enabled = true
+normal_texture = ExtResource("5_g2boe")
+heightmap_enabled = true
+heightmap_scale = -0.97
+heightmap_flip_tangent = true
+heightmap_texture = ExtResource("3_g2boe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yj6k8"]
+albedo_texture = ExtResource("2_giwhx")
+metallic = 1.0
+metallic_texture = ExtResource("4_hyxc0")
+metallic_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("5_svcmu")
+heightmap_enabled = true
+heightmap_scale = -0.254
+heightmap_flip_tangent = true
+heightmap_flip_binormal = true
+heightmap_texture = ExtResource("3_kmb5m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6srl"]
+albedo_texture = ExtResource("6_jowhd")
+metallic = 1.0
+metallic_texture = ExtResource("8_kmb5m")
+normal_enabled = true
+normal_texture = ExtResource("8_7nihc")
+heightmap_enabled = true
+heightmap_scale = -0.254
+heightmap_flip_tangent = true
+heightmap_flip_binormal = true
+heightmap_texture = ExtResource("7_g2boe")
+
+[node name="Wheelbarrow" instance=ExtResource("1_2sdj0")]
+
+[node name="Cylinder003" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_p8y52")
+
+[node name="Box002" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_yj6k8")
+
+[node name="Cylinder002" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_k6srl")
