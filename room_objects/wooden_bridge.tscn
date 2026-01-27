@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://wobpiuarfts8"]
+
+[ext_resource type="PackedScene" uid="uid://cknw2newmu561" path="res://assets/models/bridge/WODEN BRIDGEblend.blend" id="1_1dykk"]
+
+[node name="WoodenBridge" instance=ExtResource("1_1dykk")]
+
+[node name="Cube_001" parent="." index="0"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.41006613, 0)

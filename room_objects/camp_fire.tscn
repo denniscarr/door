@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://l7r01gel8mwk"]
+
+[ext_resource type="PackedScene" uid="uid://0rik7b0dguba" path="res://assets/models/Camp_fire/Obj/camp_fire.fbx" id="1_ueq4l"]
+[ext_resource type="Texture2D" uid="uid://deb4urr6v3oca" path="res://assets/models/Camp_fire/Texture/camp_fire.jpg" id="2_33m2c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7li7"]
+albedo_texture = ExtResource("2_33m2c")
+
+[node name="CampFire" instance=ExtResource("1_ueq4l")]
+
+[node name="Camp_fire_001" parent="." index="0"]
+transform = Transform3D(40, 0, 0, 0, -1.7484556e-06, 40, 0, -40, -1.7484556e-06, 0, 0.08164501, -0.009041309)
+surface_material_override/0 = SubResource("StandardMaterial3D_o7li7")
