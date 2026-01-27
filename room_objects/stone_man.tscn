@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cipm7xrpo0s41"]
+
+[ext_resource type="ArrayMesh" uid="uid://dehpua06f3l5u" path="res://assets/models/stone_man/Stone.obj" id="1_jy20a"]
+
+[node name="StoneMan" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
+mesh = ExtResource("1_jy20a")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://blukl0kc4hqgy"]
+
+[ext_resource type="PackedScene" uid="uid://dqlay2jxy8py3" path="res://assets/models/motorcycle/moto_simple_1.blend" id="1_ywaet"]
+
+[node name="Motorcycle" type="Node3D"]
+
+[node name="moto_simple_1" parent="." instance=ExtResource("1_ywaet")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.28123617, -0.66090536, 0)
