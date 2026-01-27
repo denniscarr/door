@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjgrrf48lmvgo"]
+
+[ext_resource type="PackedScene" uid="uid://d4iybtcfs1lw7" path="res://assets/models/suit/suit.blend" id="1_sxckg"]
+
+[node name="Suit" type="Node3D"]
+
+[node name="suit2" parent="." instance=ExtResource("1_sxckg")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
