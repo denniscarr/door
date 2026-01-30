@@ -148,6 +148,10 @@ func _define_typing_state() -> FsmState:
 
 		var key_event = event as InputEventKey
 
+		if key_event.keycode == KEY_ENTER:
+			_fsm_controller.switch_state(State.FINISHED)
+			return
+
 		if _CHARS_BY_KEYCODE.has(key_event.keycode):
 			_add_typed_char(_CHARS_BY_KEYCODE[key_event.keycode])
 		elif key_event.keycode == KEY_BACKSPACE || key_event.keycode == KEY_DELETE:
