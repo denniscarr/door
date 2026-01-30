@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bj8vc7neoh76n"]
+[gd_scene format=3 uid="uid://bj8vc7neoh76n"]
 
 [ext_resource type="PackedScene" uid="uid://dfiw4rmih8jur" path="res://player/player.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://ba4jd4ynh4bvu" path="res://main/main.gd" id="1_pjrb6"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cocbtwhd6x0bm" path="res://messages/reading_interface.tscn" id="6_4dugh"]
 [ext_resource type="PackedScene" uid="uid://consxsjy5ygcl" path="res://ui/movement_interface.tscn" id="7_grrlh"]
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("_starting_room", "_player", "_movement_interface", "_typing_interface", "_reading_interface", "_message_helper")]
+[node name="Main" type="Node3D" unique_id=1015983296 node_paths=PackedStringArray("_starting_room", "_player", "_movement_interface", "_typing_interface", "_reading_interface", "_message_helper")]
 script = ExtResource("1_pjrb6")
 _starting_room = NodePath("Room")
 _player = NodePath("Player")
@@ -21,22 +21,22 @@ _room_scene = ExtResource("3_xwkvk")
 _message_helper = NodePath("MessagePlacementHelper")
 _starting_seed_y = 46
 
-[node name="MessagePlacementHelper" type="Node3D" parent="."]
+[node name="MessagePlacementHelper" type="Node3D" parent="." unique_id=544867187]
 script = ExtResource("4_67ri8")
 _message_scene = ExtResource("5_4dugh")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=597948950]
 environment = ExtResource("3_grrlh")
 
-[node name="Player" parent="." instance=ExtResource("1_53q0u")]
+[node name="Player" parent="." unique_id=490985014 instance=ExtResource("1_53q0u")]
 
-[node name="Room" parent="." instance=ExtResource("3_xwkvk")]
+[node name="Room" parent="." unique_id=698035582 instance=ExtResource("3_xwkvk")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=149275684]
 
-[node name="MovementInterface" parent="CanvasLayer" instance=ExtResource("7_grrlh")]
+[node name="MovementInterface" parent="CanvasLayer" unique_id=2039463414 instance=ExtResource("7_grrlh")]
 
-[node name="NoteUI" type="Control" parent="CanvasLayer"]
+[node name="NoteUI" type="Control" parent="CanvasLayer" unique_id=1709132194]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,10 +45,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TypingInterface" parent="CanvasLayer/NoteUI" instance=ExtResource("5_kfbq2")]
+[node name="TypingInterface" parent="CanvasLayer/NoteUI" unique_id=698212132 instance=ExtResource("5_kfbq2")]
 layout_mode = 1
 mouse_filter = 2
 
-[node name="ReadingInterface" parent="CanvasLayer/NoteUI" instance=ExtResource("6_4dugh")]
+[node name="ReadingInterface" parent="CanvasLayer/NoteUI" unique_id=297205949 instance=ExtResource("6_4dugh")]
 layout_mode = 1
 mouse_filter = 2
