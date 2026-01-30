@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv00hidg8ytax"]
+[gd_scene format=3 uid="uid://bv00hidg8ytax"]
 
 [ext_resource type="PackedScene" uid="uid://t6sewsjot15r" path="res://assets/models/skeleton/skeleton.fbx" id="1_m3wf2"]
 
-[node name="skeleton" instance=ExtResource("1_m3wf2")]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m3wf2"]
+radius = 0.15
+height = 1.7758789
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3wf2"]
+size = Vector3(0.1328125, 0.7922363, 0.13842773)
+
+[node name="skeleton" unique_id=295243948 instance=ExtResource("1_m3wf2")]
 
 [node name="Skeleton3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
@@ -64,3 +71,19 @@ bones/30/scale = Vector3(1, 1, 1)
 bones/31/position = Vector3(7.90617e-11, 0.009033898, -3.5882963e-11)
 bones/31/rotation = Quaternion(0.19717363, -0.44908887, 0.10231706, 0.86543226)
 bones/31/scale = Vector3(1, 1, 1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=223847591]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1975269509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0074157715, 0.8785095, -0.012451172)
+shape = SubResource("CapsuleShape3D_m3wf2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=1099830166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22518921, 1.0854187, -0.020874023)
+shape = SubResource("BoxShape3D_m3wf2")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2" unique_id=667374331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25868037, 1.0854187, -0.020874023)
+shape = SubResource("BoxShape3D_m3wf2")

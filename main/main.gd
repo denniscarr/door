@@ -12,8 +12,10 @@ enum State { EXPLORING, CHANGING_ROOMS, TYPING, PLACING_MESSAGE, READING }
 @export var _message_helper: MessagePlacementHelper
 
 @export_category("Tweakables")
-@export_range(0, 99) var _starting_seed_x: int = 49
-@export_range(0, 99) var _starting_seed_y: int = 49
+@export_range(0, 5) var _starting_room_x: int = 1
+@export_range(0, 5) var _starting_room_y: int = 3
+@export var _map_dimensions: int = 5
+@export var _seed_offset: int = 19430
 
 var _player_coordinates: Vector2i
 var _current_room: Room
@@ -21,6 +23,9 @@ var _fsm_controller: FsmController
 
 
 func _ready():
+	_player_coordinates.x = _starting_room_x
+	_player_coordinates.y = _starting_room_y
+
 	_starting_room.initialize(_get_seed())
 	_message_helper.set_room(_get_seed())
 	_current_room = _starting_room
@@ -43,9 +48,9 @@ func _input(event: InputEvent):
 
 
 func _get_seed() -> int:
-	var seed_x = wrapi(_starting_seed_x + _player_coordinates.x, 0, 100)
-	var seed_y = wrapi(_starting_seed_y + _player_coordinates.y, 0, 100)
-	var combined := str(seed_x) + str(seed_y)
+	var seed_x = wrapi(_player_coordinates.x, 0, _map_dimensions)
+	var seed_y = wrapi(_player_coordinates.y, 0, _map_dimensions)
+	var combined := str(_seed_offset) + str(seed_x) + str(seed_y)
 	return int(combined)
 
 
@@ -58,17 +63,27 @@ func _create_room(coordinates: Vector2) -> Room:
 
 
 func _do_enter_room_sequence(dir: Constants.CompassDir):
+	var move_dir := Vector2i()
 	match dir:
 		Constants.CompassDir.NORTH:
-			_player_coordinates.y -= 1
+			move_dir.y = -1
 		Constants.CompassDir.SOUTH:
-			_player_coordinates.y += 1
+			move_dir.y = 1
 		Constants.CompassDir.EAST:
-			_player_coordinates.x += 1
+			move_dir.x = 1
 		Constants.CompassDir.WEST:
-			_player_coordinates.x -= 1
+			move_dir.x = -1
 
-	var next_room := _create_room(_player_coordinates)
+	_player_coordinates += move_dir
+
+	var next_room := _room_scene.instantiate() as Room
+	add_child(next_room)
+
+	var next_room_pos := (
+		_current_room.global_position + Vector3(move_dir.x, 0, move_dir.y) * Constants.ROOM_SIZE
+	)
+	next_room.global_position = next_room_pos
+
 	next_room.initialize(_get_seed())
 	next_room.create_opening_for_entering(dir)
 	_message_helper.set_room(_get_seed())

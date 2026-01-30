@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://lopimxu8rykt"]
+[gd_scene format=3 uid="uid://lopimxu8rykt"]
 
 [ext_resource type="PackedScene" uid="uid://b8ehmqfap5sax" path="res://assets/models/anime/anime_charcter.tscn" id="1_5v1j5"]
 
-[node name="AnimeGirl" type="Node3D"]
+[node name="AnimeGirl" type="Node3D" unique_id=1063722432]
 
-[node name="Anime_charcter" parent="." instance=ExtResource("1_5v1j5")]
+[node name="Anime_charcter" parent="." unique_id=1109147245 instance=ExtResource("1_5v1j5")]
