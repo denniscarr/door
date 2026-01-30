@@ -50,7 +50,7 @@ func initialize(p_rng_seed: int):
 	var holder := _room_object_holders.pick_random() as RoomObjectHolder
 	var object := _asset_library.room_object_scenes.pick_random().instantiate() as Node3D
 	holder.add_object(object)
-	object.rotate_y(randf_range(-180.0, 180.0))
+	object.rotate_y(deg_to_rad([0, 45, 90, 135, 180, 270, 315].pick_random()))
 
 	# Randomize textures
 	var wall_texture = _asset_library.room_wall_textures.pick_random()

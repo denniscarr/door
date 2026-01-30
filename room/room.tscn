@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddxdkvqstcq6o"]
+[gd_scene format=3 uid="uid://ddxdkvqstcq6o"]
 
 [ext_resource type="Script" uid="uid://oenc27baf5lh" path="res://room/room.gd" id="1_fsy70"]
 [ext_resource type="PackedScene" uid="uid://cdptvn1ipqlra" path="res://room/floor_or_ceiling.tscn" id="1_ppkfq"]
@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://cavfoqyctlf7m" path="res://room_objects/room_asset_library.tres" id="2_tku2a"]
 [ext_resource type="PackedScene" uid="uid://cd23us0npg4gg" path="res://room/room_object_holder.tscn" id="5_qx3y5"]
 
-[node name="Room" type="Node3D" node_paths=PackedStringArray("_spot_light", "_wall_n", "_wall_s", "_wall_e", "_wall_w", "_floor", "_ceiling", "_room_object_holders")]
+[node name="Room" type="Node3D" unique_id=782572647 node_paths=PackedStringArray("_spot_light", "_wall_n", "_wall_s", "_wall_e", "_wall_w", "_floor", "_ceiling", "_room_object_holders")]
 script = ExtResource("1_fsy70")
 _spot_light = NodePath("SpotLight3D")
 _wall_n = NodePath("WallN")
@@ -18,24 +18,24 @@ _ceiling = NodePath("Ceiling")
 _asset_library = ExtResource("2_tku2a")
 _room_object_holders = [NodePath("RoomObjectHolders/RoomObjectHolderNW"), NodePath("RoomObjectHolders/RoomObjectHolderNE"), NodePath("RoomObjectHolders/RoomObjectHolderSW"), NodePath("RoomObjectHolders/RoomObjectHolderSE")]
 
-[node name="Floor" parent="." instance=ExtResource("1_ppkfq")]
+[node name="Floor" parent="." unique_id=1614153491 instance=ExtResource("1_ppkfq")]
 
-[node name="Ceiling" parent="." instance=ExtResource("1_ppkfq")]
+[node name="Ceiling" parent="." unique_id=1107437895 instance=ExtResource("1_ppkfq")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 3, 0)
 
-[node name="WallN" parent="." instance=ExtResource("2_j33j0")]
+[node name="WallN" parent="." unique_id=1029380046 instance=ExtResource("2_j33j0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.5)
 
-[node name="WallS" parent="." instance=ExtResource("2_j33j0")]
+[node name="WallS" parent="." unique_id=698863714 instance=ExtResource("2_j33j0")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 3.5)
 
-[node name="WallW" parent="." instance=ExtResource("2_j33j0")]
+[node name="WallW" parent="." unique_id=166292575 instance=ExtResource("2_j33j0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.5, 0, 0)
 
-[node name="WallE" parent="." instance=ExtResource("2_j33j0")]
+[node name="WallE" parent="." unique_id=1202400767 instance=ExtResource("2_j33j0")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5, 0, 0)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=202637992]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.9318004, 0)
 light_energy = 2.0
 shadow_enabled = true
@@ -47,16 +47,16 @@ spot_range = 7.0
 spot_attenuation = 1.81
 spot_angle = 84.85
 
-[node name="RoomObjectHolders" type="Node3D" parent="."]
+[node name="RoomObjectHolders" type="Node3D" parent="." unique_id=681130771]
 
-[node name="RoomObjectHolderNW" parent="RoomObjectHolders" instance=ExtResource("5_qx3y5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+[node name="RoomObjectHolderNW" parent="RoomObjectHolders" unique_id=1423146325 instance=ExtResource("5_qx3y5")]
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, -2, 0, -2)
 
-[node name="RoomObjectHolderNE" parent="RoomObjectHolders" instance=ExtResource("5_qx3y5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+[node name="RoomObjectHolderNE" parent="RoomObjectHolders" unique_id=317775508 instance=ExtResource("5_qx3y5")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 2, 0, -2)
 
-[node name="RoomObjectHolderSW" parent="RoomObjectHolders" instance=ExtResource("5_qx3y5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+[node name="RoomObjectHolderSW" parent="RoomObjectHolders" unique_id=196809380 instance=ExtResource("5_qx3y5")]
+transform = Transform3D(-0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071067, -2, 0, 2)
 
-[node name="RoomObjectHolderSE" parent="RoomObjectHolders" instance=ExtResource("5_qx3y5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+[node name="RoomObjectHolderSE" parent="RoomObjectHolders" unique_id=1596933419 instance=ExtResource("5_qx3y5")]
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 2, 0, 2)

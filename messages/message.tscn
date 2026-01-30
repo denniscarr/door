@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://buqq36qfpc44w"]
+[gd_scene format=3 uid="uid://buqq36qfpc44w"]
 
 [ext_resource type="Script" uid="uid://cgbpfbwcs2kpl" path="res://messages/message.gd" id="1_xonbe"]
 [ext_resource type="Script" uid="uid://dtx1cktuh6kj" path="res://util/mouse_sensor.gd" id="2_dif2g"]
@@ -14,26 +14,26 @@ emission = Color(0.85882354, 0.7529412, 0.48235294, 1)
 emission_energy_multiplier = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kfbq2"]
-size = Vector3(0.275, 0.36, 0.1)
+size = Vector3(0.15820313, 0.15234375, 0.1)
 
-[node name="Message" type="Node3D" node_paths=PackedStringArray("_mesh_instance", "_mouse_sensor", "_shape")]
+[node name="Message" type="Node3D" unique_id=1601533364 node_paths=PackedStringArray("_mesh_instance", "_mouse_sensor", "_shape")]
 script = ExtResource("1_xonbe")
 _mesh_instance = NodePath("MeshInstance3D")
 _mouse_sensor = NodePath("StaticBody3D")
 _shape = NodePath("StaticBody3D/CollisionShape3D")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.275, 0, 0, 0, 0.36, 0, 0, 0, 1, 0, 0, 0.0032248497)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1456162369]
+transform = Transform3D(0.1555035, 0, 0, 0, 0.154282, 0, 0, 0, 1, 0, 0, 0.0032248497)
 cast_shadow = 0
 mesh = SubResource("QuadMesh_kfbq2")
 surface_material_override/0 = SubResource("StandardMaterial3D_xonbe")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1251078687]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0032248497)
 collision_mask = 0
 script = ExtResource("2_dif2g")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=687844726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0023851395)
 shape = SubResource("BoxShape3D_kfbq2")
 disabled = true
