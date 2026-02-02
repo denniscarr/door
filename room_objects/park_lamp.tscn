@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cen0ptgn56w3h"]
+
+[ext_resource type="PackedScene" uid="uid://dtywi1nyxo042" path="res://assets/models/park lamp/light.tscn" id="1_rxkj1"]
+
+[node name="ParkLamp" type="Node3D" unique_id=1971613530]
+
+[node name="LIGHT" parent="." unique_id=1138469917 instance=ExtResource("1_rxkj1")]
