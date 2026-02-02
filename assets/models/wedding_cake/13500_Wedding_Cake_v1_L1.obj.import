@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bf248tgiadxd"
+path="res://.godot/imported/13500_Wedding_Cake_v1_L1.obj-007f5e9537b6aca359492cbb7388c06f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/13500_Wedding_Cake_v1_L1.obj-007f5e9537b6aca359492cbb7388c06f.mesh"]
+
+source_file="res://assets/models/wedding_cake/13500_Wedding_Cake_v1_L1.obj"
+dest_files=["res://.godot/imported/13500_Wedding_Cake_v1_L1.obj-007f5e9537b6aca359492cbb7388c06f.mesh", "res://.godot/imported/13500_Wedding_Cake_v1_L1.obj-007f5e9537b6aca359492cbb7388c06f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(0.08, 0.08, 0.08)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
