@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ccl8m0wuw8mjs"
+path="res://.godot/imported/10076_pisa_tower_v1_max2009_it0.obj-eedc45bb6fb2917aa600640c546ba1b1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/10076_pisa_tower_v1_max2009_it0.obj-eedc45bb6fb2917aa600640c546ba1b1.mesh"]
+
+source_file="res://assets/models/pisa_tower/10076_pisa_tower_v1_max2009_it0.obj"
+dest_files=["res://.godot/imported/10076_pisa_tower_v1_max2009_it0.obj-eedc45bb6fb2917aa600640c546ba1b1.mesh", "res://.godot/imported/10076_pisa_tower_v1_max2009_it0.obj-eedc45bb6fb2917aa600640c546ba1b1.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(0.001, 0.001, 0.001)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
