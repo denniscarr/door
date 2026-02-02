@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c0v0hitg2vyiy"
+path="res://.godot/imported/10602_Rubber_Duck_v1_L3.obj-5bdd6ac8750fb33140b58030e65d52ab.mesh"
+
+[deps]
+
+files=["res://.godot/imported/10602_Rubber_Duck_v1_L3.obj-5bdd6ac8750fb33140b58030e65d52ab.mesh"]
+
+source_file="res://assets/models/rubber_duck/10602_Rubber_Duck_v1_L3.obj"
+dest_files=["res://.godot/imported/10602_Rubber_Duck_v1_L3.obj-5bdd6ac8750fb33140b58030e65d52ab.mesh", "res://.godot/imported/10602_Rubber_Duck_v1_L3.obj-5bdd6ac8750fb33140b58030e65d52ab.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(0.1, 0.1, 0.1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
