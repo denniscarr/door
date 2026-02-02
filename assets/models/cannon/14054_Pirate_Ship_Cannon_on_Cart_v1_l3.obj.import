@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://6v68smphvm42"
+path="res://.godot/imported/14054_Pirate_Ship_Cannon_on_Cart_v1_l3.obj-0d65fe40a053f3f8cb4daf488002fd9c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/14054_Pirate_Ship_Cannon_on_Cart_v1_l3.obj-0d65fe40a053f3f8cb4daf488002fd9c.mesh"]
+
+source_file="res://assets/models/cannon/14054_Pirate_Ship_Cannon_on_Cart_v1_l3.obj"
+dest_files=["res://.godot/imported/14054_Pirate_Ship_Cannon_on_Cart_v1_l3.obj-0d65fe40a053f3f8cb4daf488002fd9c.mesh", "res://.godot/imported/14054_Pirate_Ship_Cannon_on_Cart_v1_l3.obj-0d65fe40a053f3f8cb4daf488002fd9c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(0.01, 0.01, 0.01)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
