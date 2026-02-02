@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bnxsk3a172vhx"
+path="res://.godot/imported/10014_dolphin_v2_max2011_it2.obj-e3f92aaa3b52832230aad38873c9329e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/10014_dolphin_v2_max2011_it2.obj-e3f92aaa3b52832230aad38873c9329e.mesh"]
+
+source_file="res://assets/models/dolphin/10014_dolphin_v2_max2011_it2.obj"
+dest_files=["res://.godot/imported/10014_dolphin_v2_max2011_it2.obj-e3f92aaa3b52832230aad38873c9329e.mesh", "res://.godot/imported/10014_dolphin_v2_max2011_it2.obj-e3f92aaa3b52832230aad38873c9329e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(0.008, 0.008, 0.008)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
