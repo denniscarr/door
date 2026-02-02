@@ -19,6 +19,7 @@ _typing_interface = NodePath("CanvasLayer/NoteUI/TypingInterface")
 _reading_interface = NodePath("CanvasLayer/NoteUI/ReadingInterface")
 _room_scene = ExtResource("3_xwkvk")
 _message_helper = NodePath("MessagePlacementHelper")
+_map_dimensions = 7
 
 [node name="MessagePlacementHelper" type="Node3D" parent="." unique_id=544867187]
 script = ExtResource("4_67ri8")

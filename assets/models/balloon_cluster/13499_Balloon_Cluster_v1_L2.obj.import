@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cy5qr7t6u6te4"
+path="res://.godot/imported/13499_Balloon_Cluster_v1_L2.obj-a5e711f3429f1cb583f945654b763672.mesh"
+
+[deps]
+
+files=["res://.godot/imported/13499_Balloon_Cluster_v1_L2.obj-a5e711f3429f1cb583f945654b763672.mesh"]
+
+source_file="res://assets/models/balloon_cluster/13499_Balloon_Cluster_v1_L2.obj"
+dest_files=["res://.godot/imported/13499_Balloon_Cluster_v1_L2.obj-a5e711f3429f1cb583f945654b763672.mesh", "res://.godot/imported/13499_Balloon_Cluster_v1_L2.obj-a5e711f3429f1cb583f945654b763672.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(0.03, 0.03, 0.03)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
