@@ -10,6 +10,7 @@ enum State { EXPLORING, CHANGING_ROOMS, TYPING, PLACING_MESSAGE, READING }
 @export var _reading_interface: ReadingInterface
 @export var _room_scene: PackedScene
 @export var _message_helper: MessagePlacementHelper
+@export var _asset_library: RoomAssetLibrary
 
 @export_category("Tweakables")
 @export_range(0, 5) var _starting_room_x: int = 1
@@ -20,13 +21,17 @@ enum State { EXPLORING, CHANGING_ROOMS, TYPING, PLACING_MESSAGE, READING }
 var _player_coordinates: Vector2i
 var _current_room: Room
 var _fsm_controller: FsmController
+var _room_object_scenes: Array[PackedScene] = []
 
 
 func _ready():
 	_player_coordinates.x = _starting_room_x
 	_player_coordinates.y = _starting_room_y
 
-	_starting_room.initialize(_get_seed())
+	_room_object_scenes = Array(_asset_library.room_object_scenes)
+	_room_object_scenes.shuffle()
+
+	_starting_room.initialize(_get_seed(), _get_room_object_for_coordinates())
 	_message_helper.set_room(_get_seed())
 	_current_room = _starting_room
 
@@ -48,10 +53,17 @@ func _input(event: InputEvent):
 
 
 func _get_seed() -> int:
-	var seed_x = wrapi(_player_coordinates.x, 0, _map_dimensions)
-	var seed_y = wrapi(_player_coordinates.y, 0, _map_dimensions)
+	var seed_x = _player_coordinates.x
+	var seed_y = _player_coordinates.y
 	var combined := str(_seed_offset) + str(seed_x) + str(seed_y)
 	return int(combined)
+
+
+func _get_room_object_for_coordinates() -> PackedScene:
+	var index := _player_coordinates.y * _map_dimensions + _player_coordinates.x
+	print(index)
+	index = mini(index, _room_object_scenes.size() - 1)
+	return _room_object_scenes[index]
 
 
 func _create_room(coordinates: Vector2) -> Room:
@@ -75,6 +87,9 @@ func _do_enter_room_sequence(dir: Constants.CompassDir):
 			move_dir.x = -1
 
 	_player_coordinates += move_dir
+	_player_coordinates.x = wrapi(_player_coordinates.x, 0, _map_dimensions)
+	_player_coordinates.y = wrapi(_player_coordinates.y, 0, _map_dimensions)
+	print("player coordinates: %s, %s" % [_player_coordinates.x, _player_coordinates.y])
 
 	var next_room := _room_scene.instantiate() as Room
 	add_child(next_room)
@@ -84,7 +99,7 @@ func _do_enter_room_sequence(dir: Constants.CompassDir):
 	)
 	next_room.global_position = next_room_pos
 
-	next_room.initialize(_get_seed())
+	next_room.initialize(_get_seed(), _get_room_object_for_coordinates())
 	next_room.create_opening_for_entering(dir)
 	_message_helper.set_room(_get_seed())
 

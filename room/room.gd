@@ -1,8 +1,6 @@
 class_name Room
 extends Node3D
 
-signal request_door_open(door_dir: Constants.CompassDir)
-
 @export var _spot_light: SpotLight3D
 
 @export_category("Walls 'n Shit")
@@ -24,7 +22,7 @@ var rng_seed: int:
 var _rng_seed: int
 
 
-func initialize(p_rng_seed: int):
+func initialize(p_rng_seed: int, object_scene: PackedScene):
 	_rng_seed = p_rng_seed
 	seed(_rng_seed)
 	print("Generating room with seed: %s" % rng_seed)
@@ -48,7 +46,7 @@ func initialize(p_rng_seed: int):
 
 	# Randomize room objects
 	var holder := _room_object_holders.pick_random() as RoomObjectHolder
-	var object := _asset_library.room_object_scenes.pick_random().instantiate() as Node3D
+	var object := object_scene.instantiate() as Node3D
 	holder.add_object(object)
 	object.rotate_y(deg_to_rad([0, 45, 90, 135, 180, 270, 315].pick_random()))
 

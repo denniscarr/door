@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dfiw4rmih8jur" path="res://player/player.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://ba4jd4ynh4bvu" path="res://main/main.gd" id="1_pjrb6"]
+[ext_resource type="Resource" uid="uid://cavfoqyctlf7m" path="res://room_objects/room_asset_library.tres" id="3_0i4oc"]
 [ext_resource type="Environment" uid="uid://dqwtos2marag3" path="res://global/global_environment.tres" id="3_grrlh"]
 [ext_resource type="PackedScene" uid="uid://ddxdkvqstcq6o" path="res://room/room.tscn" id="3_xwkvk"]
 [ext_resource type="Script" uid="uid://c0biam0d8xh0o" path="res://messages/message_placement_helper.gd" id="4_67ri8"]
@@ -19,6 +20,7 @@ _typing_interface = NodePath("CanvasLayer/NoteUI/TypingInterface")
 _reading_interface = NodePath("CanvasLayer/NoteUI/ReadingInterface")
 _room_scene = ExtResource("3_xwkvk")
 _message_helper = NodePath("MessagePlacementHelper")
+_asset_library = ExtResource("3_0i4oc")
 _map_dimensions = 7
 
 [node name="MessagePlacementHelper" type="Node3D" parent="." unique_id=544867187]
